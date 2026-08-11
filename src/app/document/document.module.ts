@@ -22,7 +22,6 @@ import { TooltipModule } from 'primeng/tooltip'
 import { DialogModule } from 'primeng/dialog'
 import { CheckboxModule } from 'primeng/checkbox'
 import { Textarea } from 'primeng/inputtextarea'
-import { SharedModule } from '../shared/shared.module'
 import { documentFeature } from './document.reducers'
 import { routes } from './document.routes'
 import { DocumentCreateOperationsEffects } from './operations/document-create-operations.effects'
@@ -63,7 +62,6 @@ import { DocumentTypeSearchEffects } from './pages/document-type-search/document
     RetryFileUploadDialogComponent,
     DocumentTypeSearchComponent,
     CommonModule,
-    SharedModule,
     LetDirective,
     AngularAcceleratorModule,
     RouterModule.forChild(routes),
