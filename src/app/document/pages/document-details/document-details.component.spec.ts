@@ -9,12 +9,9 @@ import { LetDirective } from '@ngrx/component'
 import { Store } from '@ngrx/store'
 import { MockStore, provideMockStore } from '@ngrx/store/testing'
 import { provideAppStateServiceMock, provideUserServiceMock } from '@onecx/angular-integration-interface/mocks'
-import {
-  BreadcrumbService,
-  HAS_PERMISSION_CHECKER,
-  PortalCoreModule,
-  UserService
-} from '@onecx/portal-integration-angular'
+import { UserService } from '@onecx/angular-integration-interface'
+import { HAS_PERMISSION_CHECKER } from '@onecx/angular-utils'
+import { BreadcrumbService, AngularAcceleratorModule } from '@onecx/angular-accelerator'
 import { TranslateTestingModule } from 'ngx-translate-testing'
 import { DocumentDetailsActions } from './document-details.actions'
 import { DocumentDetailsComponent } from './document-details.component'
@@ -26,7 +23,6 @@ describe('DocumentDetailsComponent', () => {
   let component: DocumentDetailsComponent
   let fixture: ComponentFixture<DocumentDetailsComponent>
   let store: MockStore<Store>
-  let breadcrumbService: BreadcrumbService
 
   const mockActivatedRoute = { snapshot: { data: {} } }
 
@@ -41,15 +37,15 @@ describe('DocumentDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DocumentDetailsComponent],
       imports: [
-        PortalCoreModule,
+        DocumentDetailsComponent,
+        AngularAcceleratorModule,
         LetDirective,
         ReactiveFormsModule,
         NoopAnimationsModule,
-        TranslateTestingModule.withTranslations('en', require('./../../../../assets/i18n/en.json')).withTranslations(
+        TranslateTestingModule.withTranslations('en', require('./src/assets/i18n/en.json')).withTranslations(
           'de',
-          require('./../../../../assets/i18n/de.json')
+          require('./src/assets/i18n/de.json')
         )
       ],
       providers: [
@@ -76,7 +72,6 @@ describe('DocumentDetailsComponent', () => {
 
     fixture = TestBed.createComponent(DocumentDetailsComponent)
     component = fixture.componentInstance
-    breadcrumbService = TestBed.inject(BreadcrumbService)
     fixture.detectChanges()
   })
 
@@ -85,8 +80,11 @@ describe('DocumentDetailsComponent', () => {
   })
 
   it('should set breadcrumbs on init', () => {
+    const breadcrumbService = component['breadcrumbService']
     jest.spyOn(breadcrumbService, 'setItems')
+
     component.ngOnInit()
+
     expect(breadcrumbService.setItems).toHaveBeenCalledWith([
       expect.objectContaining({ labelKey: 'DOCUMENT_SEARCH.HEADER' }),
       expect.objectContaining({ labelKey: 'DOCUMENT_DETAILS.BREADCRUMB' })
@@ -125,7 +123,7 @@ describe('DocumentDetailsComponent', () => {
     component.headerActions$.subscribe((actions) => {
       const backAction = actions.find((a) => a.labelKey?.includes('BACK'))
       jest.spyOn(store, 'dispatch')
-      backAction?.actionCallback()
+      backAction?.actionCallback?.()
       expect(store.dispatch).toHaveBeenCalledWith(DocumentDetailsActions.navigateBackButtonClicked())
       done()
     })

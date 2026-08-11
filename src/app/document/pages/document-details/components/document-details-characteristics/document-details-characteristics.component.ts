@@ -1,9 +1,28 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
-import { FormArray } from '@angular/forms'
+import { CommonModule } from '@angular/common'
+import { FormArray, ReactiveFormsModule } from '@angular/forms'
+import { TranslateModule } from '@ngx-translate/core'
+import { ButtonModule } from 'primeng/button'
+import { FluidModule } from 'primeng/fluid'
+import { InputTextModule } from 'primeng/inputtext'
+import { TableModule } from 'primeng/table'
+import { TooltipModule } from 'primeng/tooltip'
 import { DocumentCharacteristicsFormGroup } from 'src/app/document/types/document-create.types'
+import { FloatLabelModule } from 'primeng/floatlabel'
 
 @Component({
   selector: 'app-document-details-characteristics',
+  imports: [
+    CommonModule,
+    TranslateModule,
+    FluidModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    InputTextModule,
+    TooltipModule,
+    TableModule,
+    FloatLabelModule
+  ],
   templateUrl: './document-details-characteristics.component.html'
 })
 export class DocumentDetailsCharacteristicsComponent {

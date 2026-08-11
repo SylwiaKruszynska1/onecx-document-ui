@@ -1,13 +1,30 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { FormArray } from '@angular/forms'
+import { FormArray, ReactiveFormsModule } from '@angular/forms'
 import {
   DocumentCharacteristicFormValue,
   DocumentCharacteristicsFormGroup
 } from '../../../../types/document-create.types'
 import { createCharacteristicFormGroup } from '../../../../utils/document-details-form.factory'
+import { TranslateModule } from '@ngx-translate/core'
+import { ButtonModule } from 'primeng/button'
+import { InputTextModule } from 'primeng/inputtext'
+import { TableModule } from 'primeng/table'
+import { TooltipModule } from 'primeng/tooltip'
+import { FloatLabelModule } from 'primeng/floatlabel'
+import { FluidModule } from 'primeng/fluid'
 
 @Component({
   selector: 'app-document-create-characteristics',
+  imports: [
+    TranslateModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    InputTextModule,
+    TooltipModule,
+    TableModule,
+    FloatLabelModule,
+    FluidModule
+  ],
   templateUrl: './document-create-characteristics.component.html'
 })
 export class DocumentCreateCharacteristicsComponent implements OnInit {

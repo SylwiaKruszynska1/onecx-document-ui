@@ -1,30 +1,56 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { Store } from '@ngrx/store'
 import {
   Action,
+  AngularAcceleratorModule,
   BreadcrumbService,
   DataSortDirection,
   InteractiveDataViewComponentState,
   RowListGridData,
   SearchHeaderComponentState
-} from '@onecx/portal-integration-angular'
+} from '@onecx/angular-accelerator'
 import { PrimeIcons } from 'primeng/api'
 import { map, Observable } from 'rxjs'
 import { DocumentType } from 'src/app/shared/generated'
 import { DocumentTypeSearchActions } from './document-type-search.actions'
 import { selectDocumentTypeSearchViewModel } from './document-type-search.selectors'
 import { DocumentTypeSearchViewModel } from './document-type-search.viewmodel'
+import { TranslateModule } from '@ngx-translate/core'
+import { CheckboxModule } from 'primeng/checkbox'
+import { DialogModule } from 'primeng/dialog'
+import { InputTextModule } from 'primeng/inputtext'
+import { Textarea } from 'primeng/inputtextarea'
+import { AsyncPipe, CommonModule } from '@angular/common'
+import { PortalPageComponent } from '@onecx/angular-utils'
+import { LetDirective } from '@ngrx/component'
+import { ButtonModule } from 'primeng/button'
+import { documentTypeSearchColumns } from './document-type-search.columns'
 
 @Component({
   selector: 'app-document-type-search',
-  templateUrl: './document-type-search.component.html'
+  templateUrl: './document-type-search.component.html',
+  imports: [
+    CommonModule,
+    TranslateModule,
+    CheckboxModule,
+    ButtonModule,
+    ReactiveFormsModule,
+    DialogModule,
+    InputTextModule,
+    Textarea,
+    AngularAcceleratorModule,
+    AsyncPipe,
+    PortalPageComponent,
+    LetDirective
+  ]
 })
 export class DocumentTypeSearchComponent implements OnInit {
   viewModel$: Observable<DocumentTypeSearchViewModel>
   defaultDataSortDirection: DataSortDirection
   headerActions$: Observable<Action[]>
   documentTypeFormGroup: FormGroup
+  public displayedColumnKeys: string[] = []
 
   constructor(
     private readonly breadcrumbService: BreadcrumbService,
@@ -35,6 +61,7 @@ export class DocumentTypeSearchComponent implements OnInit {
     this.defaultDataSortDirection = DataSortDirection.NONE
     this.headerActions$ = this.buildHeaderActions()
     this.documentTypeFormGroup = this.buildFormGroup()
+    this.displayedColumnKeys = documentTypeSearchColumns.map((column) => column.id)
   }
 
   ngOnInit() {

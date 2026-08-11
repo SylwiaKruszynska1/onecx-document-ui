@@ -1,11 +1,11 @@
 <ocx-portal-page *ngrxLet="viewModel$; let vm">
   <ocx-page-header
-    header="{{ 'DOCUMENT_CREATE.HEADER' | translate }}"
+    [header]="'DOCUMENT_CREATE.HEADER' | translate"
     [disableDefaultActions]="true"
     [manualBreadcrumbs]="true"
   ></ocx-page-header>
 
-  <ocx-page-content>
+  <ocx-content>
     <div class="document-create-shell p-3 mt-2">
       <p-steps [model]="stepsModel" [activeIndex]="vm.activeStep"> </p-steps>
 
@@ -34,5 +34,5 @@
         ></app-document-create-characteristics>
       </ng-container>
     </div>
-  </ocx-page-content>
+  </ocx-content>
 </ocx-portal-page>

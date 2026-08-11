@@ -1,5 +1,5 @@
 import { Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core'
-import { FormBuilder, FormGroup } from '@angular/forms'
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Store } from '@ngrx/store'
 import { map, Observable } from 'rxjs'
@@ -8,25 +8,40 @@ import { PrimeIcons, SelectItem } from 'primeng/api'
 
 import {
   Action,
+  AngularAcceleratorModule,
   BreadcrumbService,
   buildSearchCriteria,
   DataAction,
   DataSortDirection,
   InteractiveDataViewComponentState,
   RowListGridData,
-  SearchHeaderComponentState,
-  UserService
-} from '@onecx/portal-integration-angular'
-
+  SearchHeaderComponentState
+} from '@onecx/angular-accelerator'
+import { UserService } from '@onecx/angular-integration-interface'
 import { LifeCycleState } from 'src/app/shared/generated'
 import { DocumentSearchCriteriaComponent } from './components/document-search-criteria/document-search-criteria.component'
 import { DocumentSearchActions } from './document-search.actions'
+import { documentSearchColumns } from './document-search.columns'
 import { DocumentSearchCriteriaSchema, documentSearchCriteriasSchema } from './document-search.parameters'
 import { selectDocumentSearchViewModel } from './document-search.selectors'
 import { DocumentSearchViewModel } from './document-search.viewmodel'
+import { TranslateModule } from '@ngx-translate/core'
+import { AsyncPipe, CommonModule } from '@angular/common'
+import { PortalPageComponent } from '@onecx/angular-utils'
+import { LetDirective } from '@ngrx/component'
 
 @Component({
   selector: 'app-document-search',
+  imports: [
+    TranslateModule,
+    AngularAcceleratorModule,
+    DocumentSearchCriteriaComponent,
+    AsyncPipe,
+    PortalPageComponent,
+    LetDirective,
+    CommonModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './document-search.component.html',
   styleUrls: ['./document-search.component.scss']
 })
@@ -43,6 +58,7 @@ export class DocumentSearchComponent implements OnInit {
   deleteEnabled = false
   public hasEditPermission = false
   public hasViewPermission = false
+  public displayedColumnKeys: string[] = []
 
   constructor(
     private readonly breadcrumbService: BreadcrumbService,
@@ -58,11 +74,18 @@ export class DocumentSearchComponent implements OnInit {
     this.headerActions$ = this.buildHeaderActions()
     this.lifeCycleStates = this.buildLifeCycleStates()
     this.documentSearchFormGroup = this.buildSearchFormGroup()
-    if (this.userService.hasPermission('DOCUMENT#EDIT')) this.hasEditPermission = true
-    if (this.userService.hasPermission('DOCUMENT#VIEW')) this.hasViewPermission = true
+    this.displayedColumnKeys = documentSearchColumns.map((column) => column.id)
   }
 
   ngOnInit() {
+    this.userService.hasPermission('DOCUMENT#EDIT').then((hasPermission) => {
+      this.hasEditPermission = hasPermission
+      this.prepareAdditionalActions()
+    })
+    this.userService.hasPermission('DOCUMENT#VIEW').then((hasPermission) => {
+      this.hasViewPermission = hasPermission
+      this.prepareAdditionalActions()
+    })
     this.breadcrumbService.setItems([
       {
         titleKey: 'DOCUMENT_SEARCH.BREADCRUMB',

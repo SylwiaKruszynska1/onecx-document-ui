@@ -9,11 +9,10 @@ import { DocumentDetailsEffects } from './pages/document-details/document-detail
 
 import { StoreModule } from '@ngrx/store'
 import { TranslateModule } from '@ngx-translate/core'
-import { addInitializeModuleGuard } from '@onecx/angular-integration-interface'
-import { PortalCoreModule, providePortalDialogService } from '@onecx/portal-integration-angular'
+import { AngularAcceleratorModule, providePortalDialogService } from '@onecx/angular-accelerator'
 import { ButtonModule } from 'primeng/button'
-import { CalendarModule } from 'primeng/calendar'
-import { DropdownModule } from 'primeng/dropdown'
+import { DatePickerModule } from 'primeng/datepicker'
+import { SelectModule } from 'primeng/select'
 import { InputTextModule } from 'primeng/inputtext'
 import { MultiSelectModule } from 'primeng/multiselect'
 import { StepsModule } from 'primeng/steps'
@@ -22,6 +21,7 @@ import { TabViewModule } from 'primeng/tabview'
 import { TooltipModule } from 'primeng/tooltip'
 import { DialogModule } from 'primeng/dialog'
 import { CheckboxModule } from 'primeng/checkbox'
+import { Textarea } from 'primeng/inputtextarea'
 import { SharedModule } from '../shared/shared.module'
 import { documentFeature } from './document.reducers'
 import { routes } from './document.routes'
@@ -37,7 +37,6 @@ import { DocumentSearchCriteriaComponent } from './pages/document-search/compone
 import { DocumentSearchComponent } from './pages/document-search/document-search.component'
 import { DocumentSearchEffects } from './pages/document-search/document-search.effects'
 import { DocumentDetailsAttachmentListComponent } from './pages/document-details/components/document-details-attachment-list/document-details-attachment-list.component'
-import { InputTextareaModule } from 'primeng/inputtextarea'
 import { FileUploadComponent } from './components/file-upload/file-upload.component'
 import { DocumentDetailsFormComponent } from './components/document-details-form/document-details-form.component'
 import { DocumentDetailsCharacteristicsComponent } from './pages/document-details/components/document-details-characteristics/document-details-characteristics.component'
@@ -47,7 +46,7 @@ import { DocumentTypeSearchEffects } from './pages/document-type-search/document
 
 @NgModule({
   providers: [providePortalDialogService()],
-  declarations: [
+  imports: [
     DocumentCreateComponent,
     DocumentCreateDetailsFormComponent,
     DocumentCreateAttachmentsComponent,
@@ -62,26 +61,24 @@ import { DocumentTypeSearchEffects } from './pages/document-type-search/document
     DocumentDetailsCharacteristicsComponent,
     FileUploadComponent,
     RetryFileUploadDialogComponent,
-    DocumentTypeSearchComponent
-  ],
-  imports: [
+    DocumentTypeSearchComponent,
     CommonModule,
     SharedModule,
     LetDirective,
-    PortalCoreModule.forMicroFrontend(),
-    RouterModule.forChild(addInitializeModuleGuard(routes)),
+    AngularAcceleratorModule,
+    RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
     ButtonModule,
-    CalendarModule,
-    DropdownModule,
+    DatePickerModule,
+    SelectModule,
     InputTextModule,
     MultiSelectModule,
     StepsModule,
     TableModule,
     TabViewModule,
     TooltipModule,
-    InputTextareaModule,
+    Textarea,
     DialogModule,
     CheckboxModule,
     StoreModule.forFeature(documentFeature),

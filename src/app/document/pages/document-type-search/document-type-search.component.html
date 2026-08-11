@@ -5,13 +5,13 @@
 >
   <ocx-loading-indicator *ngIf="vm.loadingIndicator"></ocx-loading-indicator>
   <ocx-search-header
-    [headline]="'DOCUMENT_TYPE_SEARCH.HEADER' | translate"
+    [header]="'DOCUMENT_TYPE_SEARCH.HEADER' | translate"
     [subheader]="'DOCUMENT_TYPE_SEARCH.SUB_HEADER' | translate"
     [manualBreadcrumbs]="true"
     [actions]="(headerActions$ | async) ?? []"
     (componentStateChanged)="searchHeaderComponentStateChanged($event)"
     [viewMode]="vm.searchHeaderComponentState?.activeViewMode ?? 'basic'"
-    [attr.aria-label]="'DOCUMENT_TYPE_SEARCH.ARIA-LABEL' | translate"
+    [ariaLabel]="'DOCUMENT_TYPE_SEARCH.ARIA-LABEL' | translate"
   >
   </ocx-search-header>
   <ocx-content-container layout="horizontal">
@@ -23,10 +23,10 @@
         deletePermission="DOCUMENT#DELETE"
         [data]="vm.results"
         [columns]="vm.columns"
+        [displayedColumnKeys]="displayedColumnKeys"
         [emptyResultsMessage]="'DOCUMENT_TYPE_SEARCH.EMPTY_RESULTS' | translate"
         (componentStateChanged)="resultComponentStateChanged($event)"
         [layout]="vm.resultComponentState?.layout ?? 'table'"
-        [displayedColumns]="vm.resultComponentState?.displayedColumns ?? []"
         [supportedViewLayouts]="['list', 'table']"
         [page]="vm.resultComponentState?.activePage ?? 0"
         [pageSize]="vm.resultComponentState?.pageSize"
@@ -37,7 +37,7 @@
         [defaultGroupKey]="vm.resultComponentState?.activeColumnGroupKey ?? ''"
         [actionColumnPosition]="vm.resultComponentState?.actionColumnConfig?.position ?? 'left'"
         [frozenActionColumn]="vm.resultComponentState?.actionColumnConfig?.frozen ?? false"
-        [attr.aria-label]="'DOCUMENT_TYPE_SEARCH.RESULTS.NAME' | translate"
+        [ariaLabel]="'DOCUMENT_TYPE_SEARCH.RESULTS.NAME' | translate"
       >
       </ocx-interactive-data-view>
     </ocx-content>
@@ -68,7 +68,7 @@
           pInputText
           class="w-full"
           formControlName="name"
-          [attr.aria-label]="'DOCUMENT_TYPE_SEARCH.DIALOG.NAME_LABEL' | translate"
+          [ariaLabel]="'DOCUMENT_TYPE_SEARCH.DIALOG.NAME_LABEL' | translate"
         />
       </div>
       <div class="field">
@@ -80,7 +80,7 @@
           pInputTextarea
           class="w-full"
           formControlName="description"
-          [attr.aria-label]="'DOCUMENT_TYPE_SEARCH.DIALOG.DESCRIPTION_LABEL' | translate"
+          [ariaLabel]="'DOCUMENT_TYPE_SEARCH.DIALOG.DESCRIPTION_LABEL' | translate"
         ></textarea>
       </div>
       <div class="field flex align-items-center gap-2">

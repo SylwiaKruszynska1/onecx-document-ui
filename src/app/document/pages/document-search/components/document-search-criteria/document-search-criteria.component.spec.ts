@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
-import { CalendarModule } from 'primeng/calendar'
-import { DropdownModule } from 'primeng/dropdown'
+import { DatePickerModule } from 'primeng/datepicker'
+import { SelectModule } from 'primeng/select'
 import { InputTextModule } from 'primeng/inputtext'
 import { MultiSelectModule } from 'primeng/multiselect'
 import { TooltipModule } from 'primeng/tooltip'
@@ -16,16 +16,19 @@ describe('DocumentSearchCriteriaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DocumentSearchCriteriaComponent],
       imports: [
+        DocumentSearchCriteriaComponent,
         ReactiveFormsModule,
         NoopAnimationsModule,
-        CalendarModule,
-        DropdownModule,
+        DatePickerModule,
+        SelectModule,
         InputTextModule,
         MultiSelectModule,
         TooltipModule,
-        TranslateTestingModule.withTranslations('en', require('./../../../../../../assets/i18n/en.json'))
+        TranslateTestingModule.withTranslations('en', require('./src/assets/i18n/en.json')).withTranslations(
+          'de',
+          require('./src/assets/i18n/de.json')
+        )
       ]
     }).compileComponents()
 

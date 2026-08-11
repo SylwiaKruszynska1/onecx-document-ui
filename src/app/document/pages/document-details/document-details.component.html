@@ -4,7 +4,7 @@
   *ngrxLet="viewModel$; let vm"
 >
   <ocx-loading-indicator *ngIf="vm.detailsLoadingIndicator"> </ocx-loading-indicator>
-  <ocx-data-loading-error *ngIf="!vm.detailsLoaded && !vm.detailsLoadingIndicator"> </ocx-data-loading-error>
+  <ocx-error *ngIf="!vm.detailsLoaded && !vm.detailsLoadingIndicator"> </ocx-error>
   <div *ngIf="vm.detailsLoaded && !vm.detailsLoadingIndicator" class="flex flex-column">
     <ocx-page-header
       [header]="'DOCUMENT_DETAILS.HEADER' | translate"
@@ -12,38 +12,46 @@
       [actions]="(headerActions$ | async) ?? []"
       [disableDefaultActions]="true"
       [manualBreadcrumbs]="true"
-      [attr.aria-label]="'DOCUMENT_DETAILS.FORM.NAME' | translate"
+      [ariaLabel]="'DOCUMENT_DETAILS.FORM.NAME' | translate"
     >
     </ocx-page-header>
-    <ocx-page-content class="mb-4" role="main" [attr.aria-label]="'DOCUMENT_DETAILS.ARIA-LABEL' | translate">
-      <div class="surface-section mt-3 mb-1 mx-3">
-        <app-document-details-form [formGroup]="formGroup" [availableTypes]="(documentTypes$ | async) || []">
-        </app-document-details-form>
-      </div>
-    </ocx-page-content>
-    <ocx-page-content>
-      <div class="card p-4">
-        <p-tabView>
-          <p-tabPanel [header]="'DOCUMENT_DETAILS.SECTIONS.ATTACHMENTS' | translate">
-            <app-document-details-attachment-list
-              [attachments]="attachmentsFormArray"
-              [editMode]="vm.editMode"
-              (download)="onAttachmentDownload($event)"
-              (retryUpload)="onFileUploadRetry($event)"
-            >
-            </app-document-details-attachment-list>
-          </p-tabPanel>
-          <p-tabPanel [header]="'DOCUMENT_DETAILS.SECTIONS.CHARACTERISTICS' | translate">
-            <app-document-details-characteristics
-              [characteristics]="characteristicsFormArray"
-              [editMode]="vm.editMode"
-              (characteristicRemoved)="onCharacteristicRemove($event)"
-              (characteristicAdded)="onCharacteristicAdd()"
-            >
-            </app-document-details-characteristics>
-          </p-tabPanel>
-        </p-tabView>
-      </div>
-    </ocx-page-content>
+    <ocx-content-container layout="vertical">
+      <ocx-content class="w-full" role="main" [ariaLabel]="'DOCUMENT_DETAILS.ARIA-LABEL' | translate">
+        <div class="surface-section mb-1 mx-3">
+          <app-document-details-form [formGroup]="formGroup" [availableTypes]="(documentTypes$ | async) || []">
+          </app-document-details-form>
+        </div>
+      </ocx-content>
+      <ocx-content class="w-full">
+        <div class="card p-4">
+          <p-tabs value="0">
+            <p-tablist>
+              <p-tab value="0">{{ 'DOCUMENT_DETAILS.SECTIONS.ATTACHMENTS' | translate }}</p-tab>
+              <p-tab value="1">{{ 'DOCUMENT_DETAILS.SECTIONS.CHARACTERISTICS' | translate }}</p-tab>
+            </p-tablist>
+            <p-tabpanels>
+              <p-tabpanel value="0">
+                <app-document-details-attachment-list
+                  [attachments]="attachmentsFormArray"
+                  [editMode]="vm.editMode"
+                  (download)="onAttachmentDownload($event)"
+                  (retryUpload)="onFileUploadRetry($event)"
+                >
+                </app-document-details-attachment-list>
+              </p-tabpanel>
+              <p-tabpanel value="1">
+                <app-document-details-characteristics
+                  [characteristics]="characteristicsFormArray"
+                  [editMode]="vm.editMode"
+                  (characteristicRemoved)="onCharacteristicRemove($event)"
+                  (characteristicAdded)="onCharacteristicAdd()"
+                >
+                </app-document-details-characteristics>
+              </p-tabpanel>
+            </p-tabpanels>
+          </p-tabs>
+        </div>
+      </ocx-content>
+    </ocx-content-container>
   </div>
 </ocx-portal-page>
