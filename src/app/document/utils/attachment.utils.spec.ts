@@ -117,44 +117,25 @@ describe('attachment.utils', () => {
       expect(noSpecialCharacters(control)).toBeNull()
     })
 
-    it('should return validation error for value containing backslash', () => {
-      const control = new FormControl('bad\\name')
-      expect(noSpecialCharacters(control)).toEqual({ hasSpecialChars: true })
-    })
+    it('should return validation error for values containing special characters', () => {
+      const invalidValues = [
+        'bad\\name',
+        'bad/name',
+        'bad:name',
+        'bad*name',
+        'bad?name',
+        'bad"name',
+        'bad<name>',
+        'bad|name'
+      ]
 
-    it('should return validation error for value containing forward slash', () => {
-      const control = new FormControl('bad/name')
-      expect(noSpecialCharacters(control)).toEqual({ hasSpecialChars: true })
-    })
+      invalidValues.forEach((value) => {
+        const control = new FormControl(value)
 
-    it('should return validation error for value containing colon', () => {
-      const control = new FormControl('bad:name')
-      expect(noSpecialCharacters(control)).toEqual({ hasSpecialChars: true })
-    })
-
-    it('should return validation error for value containing asterisk', () => {
-      const control = new FormControl('bad*name')
-      expect(noSpecialCharacters(control)).toEqual({ hasSpecialChars: true })
-    })
-
-    it('should return validation error for value containing question mark', () => {
-      const control = new FormControl('bad?name')
-      expect(noSpecialCharacters(control)).toEqual({ hasSpecialChars: true })
-    })
-
-    it('should return validation error for value containing double quote', () => {
-      const control = new FormControl('bad"name')
-      expect(noSpecialCharacters(control)).toEqual({ hasSpecialChars: true })
-    })
-
-    it('should return validation error for value containing angle brackets', () => {
-      const control = new FormControl('bad<name>')
-      expect(noSpecialCharacters(control)).toEqual({ hasSpecialChars: true })
-    })
-
-    it('should return validation error for value containing pipe', () => {
-      const control = new FormControl('bad|name')
-      expect(noSpecialCharacters(control)).toEqual({ hasSpecialChars: true })
+        expect(noSpecialCharacters(control)).toEqual({
+          hasSpecialChars: true
+        })
+      })
     })
   })
 })

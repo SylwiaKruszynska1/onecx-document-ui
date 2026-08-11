@@ -17,6 +17,13 @@
       [ariaLabel]="'FILE_UPLOAD.CHOOSE_BTN' | translate"
       [disabled]="disabled"
     ></button>
-    <input type="file" [multiple]="multiple" [disabled]="disabled" (change)="onFileInputChange($event)" title />
+    <input
+      id="fileInput"
+      type="file"
+      [multiple]="multiple"
+      [disabled]="disabled"
+      (change)="onFileInputChange($event)"
+      title
+    />
   </div>
 </div>
