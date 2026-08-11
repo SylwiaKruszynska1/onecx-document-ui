@@ -1,4 +1,4 @@
-import { Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Store } from '@ngrx/store'
@@ -41,6 +41,7 @@ import { LetDirective } from '@ngrx/component'
     LetDirective,
     ReactiveFormsModule
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-search.component.html',
   styleUrls: ['./document-search.component.scss']
 })

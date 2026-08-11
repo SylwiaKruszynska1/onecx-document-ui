@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { DocumentAttachmentFormValue } from '../../../../types/document-create.types'
 import { formatBytes } from '../../../../utils/attachment.utils'
@@ -22,6 +22,7 @@ import { InputTextModule } from 'primeng/inputtext'
     ReactiveFormsModule,
     InputTextModule
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-details-attachment-list.component.html',
   styleUrl: './document-details-attachment-list.component.scss'
 })

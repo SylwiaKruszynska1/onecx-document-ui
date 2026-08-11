@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { Store } from '@ngrx/store'
 import {
@@ -29,7 +29,6 @@ import { documentTypeSearchColumns } from './document-type-search.columns'
 
 @Component({
   selector: 'app-document-type-search',
-  templateUrl: './document-type-search.component.html',
   imports: [
     TranslateModule,
     CheckboxModule,
@@ -42,7 +41,9 @@ import { documentTypeSearchColumns } from './document-type-search.columns'
     AsyncPipe,
     PortalPageComponent,
     LetDirective
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './document-type-search.component.html'
 })
 export class DocumentTypeSearchComponent implements OnInit {
   viewModel$: Observable<DocumentTypeSearchViewModel>

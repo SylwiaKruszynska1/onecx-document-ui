@@ -1,5 +1,5 @@
 // Core imports
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core'
+import { Component, OnInit, Output, Input, EventEmitter, ChangeDetectionStrategy } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
 import { SelectItem } from 'primeng/api'
@@ -23,6 +23,7 @@ import { LifeCycleState } from 'src/app/shared/generated'
     FloatLabelModule,
     InputTextModule
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-quick-upload-form.component.html',
   styleUrls: ['./document-quick-upload-form.component.scss']
 })

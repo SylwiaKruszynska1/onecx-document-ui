@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { PrimeIcons, SelectItem } from 'primeng/api'
@@ -46,6 +46,7 @@ enum SortOrder {
     AngularAcceleratorModule,
     PortalPageComponent
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-quick-upload.component.html',
   styleUrls: ['./document-quick-upload.component.scss']
 })

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { SelectItem } from 'primeng/api'
 import { createDocumentDetailsSectionForm } from '../../../../utils/document-details-form.factory'
 import { DocumentCreateDetailsFormGroup, DocumentCreateDetailsStepData } from '../../../../types/document-create.types'
@@ -10,6 +10,7 @@ import { ButtonModule } from 'primeng/button'
 @Component({
   selector: 'app-document-create-details-form',
   imports: [TranslateModule, ReactiveFormsModule, DocumentDetailsFormComponent, ButtonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-create-details-form.component.html'
 })
 export class DocumentCreateDetailsFormComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { Action, AngularAcceleratorModule, BreadcrumbService } from '@onecx/angular-accelerator'
 import { map, Observable, Subscription } from 'rxjs'
@@ -45,6 +45,7 @@ import { DocumentDetailsFormComponent } from '../../components/document-details-
     DocumentDetailsAttachmentListComponent,
     DocumentDetailsFormComponent
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-details.component.html'
 })
 export class DocumentDetailsComponent implements OnInit, OnDestroy {

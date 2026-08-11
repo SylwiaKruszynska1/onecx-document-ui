@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, ReactiveFormsModule } from '@angular/forms'
 import {
   DocumentCharacteristicFormValue,
@@ -25,6 +25,7 @@ import { FluidModule } from 'primeng/fluid'
     FloatLabelModule,
     FluidModule
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-create-characteristics.component.html'
 })
 export class DocumentCreateCharacteristicsComponent implements OnInit {

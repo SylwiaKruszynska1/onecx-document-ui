@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { SelectItem } from 'primeng/api'
 import { AttachmentDraft } from '../../../../types/document-create.types'
@@ -27,6 +27,7 @@ import { FluidModule } from 'primeng/fluid'
     FloatLabelModule,
     FluidModule
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-create-attachments.component.html'
 })
 export class DocumentCreateAttachmentsComponent implements OnInit {

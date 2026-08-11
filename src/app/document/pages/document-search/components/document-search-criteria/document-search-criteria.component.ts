@@ -1,4 +1,4 @@
-import { Component, Input, QueryList, ViewChildren } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input, QueryList, ViewChildren } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
 import { SelectItem } from 'primeng/api'
@@ -23,6 +23,7 @@ import { FluidModule } from 'primeng/fluid'
     FloatLabelModule,
     FluidModule
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-search-criteria.component.html'
 })
 export class DocumentSearchCriteriaComponent {

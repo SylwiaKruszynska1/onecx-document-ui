@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core'
 import { SelectItem } from 'primeng/api'
 import { LifeCycleState } from 'src/app/shared/generated/model/lifeCycleState'
 import { DocumentCreateDetailsFormGroup, DocumentDetailsFormGroup } from '../../types/document-create.types'
@@ -21,6 +21,7 @@ import { FluidModule } from 'primeng/fluid'
     FloatLabelModule,
     FluidModule
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-details-form.component.html',
   styleUrls: ['./document-details-form.component.scss']
 })

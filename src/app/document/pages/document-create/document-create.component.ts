@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { TranslateModule, TranslateService } from '@ngx-translate/core'
 import { AngularAcceleratorModule, BreadcrumbService } from '@onecx/angular-accelerator'
@@ -39,6 +39,7 @@ import { StepsModule } from 'primeng/steps'
     DocumentCreateAttachmentsComponent,
     DocumentCreateDetailsFormComponent
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-create.component.html',
   styleUrls: ['./document-create.component.scss']
 })
