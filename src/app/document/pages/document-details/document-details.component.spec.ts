@@ -16,7 +16,7 @@ import { TranslateTestingModule } from 'ngx-translate-testing'
 import { DocumentDetailsActions } from './document-details.actions'
 import { DocumentDetailsComponent } from './document-details.component'
 import { initialState } from './document-details.reducers'
-import { selectDocumentDetailsViewModel } from './document-details.selectors'
+import { selectDocumentDetailsViewModel, selectDocumentTypes } from './document-details.selectors'
 import { DocumentDetailsViewModel } from './document-details.viewmodel'
 
 describe('DocumentDetailsComponent', () => {
@@ -331,6 +331,16 @@ describe('DocumentDetailsComponent', () => {
           fileName: 'test.pdf'
         })
       )
+    })
+  })
+
+  describe('documentTypes$', () => {
+    it('should select document types', () => {
+      const spy = jest.spyOn(store, 'select')
+
+      component.documentTypes$
+
+      expect(spy).toHaveBeenCalledWith(selectDocumentTypes)
     })
   })
 })
