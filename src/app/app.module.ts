@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { isDevMode, NgModule } from '@angular/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { LetDirective } from '@ngrx/component'
@@ -37,7 +37,6 @@ import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
       traceLimit: 75
     }),
     EffectsModule.forRoot([]),
-    HttpClientModule,
     AngularAcceleratorModule,
     TranslateModule.forRoot({
       extend: true,
@@ -56,7 +55,8 @@ import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
       useFactory: apiConfigProvider,
       deps: [ConfigurationService, AppStateService]
     },
-    provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/')
+    provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
+    provideHttpClient(withInterceptorsFromDi())
   ]
 })
 export class AppModule {}
