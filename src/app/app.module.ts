@@ -1,6 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { isDevMode, NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { LetDirective } from '@ngrx/component'
 import { EffectsModule } from '@ngrx/effects'
@@ -24,7 +23,6 @@ import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
   imports: [
     AppComponent,
     AngularAuthModule,
-    BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     LetDirective,
