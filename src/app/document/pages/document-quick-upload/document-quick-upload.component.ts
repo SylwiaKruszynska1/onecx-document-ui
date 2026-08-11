@@ -24,7 +24,7 @@ import { TooltipModule } from 'primeng/tooltip'
 import { ButtonModule } from 'primeng/button'
 import { TranslateModule } from '@ngx-translate/core'
 import { DialogModule } from 'primeng/dialog'
-import { AsyncPipe, CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { PortalPageComponent } from '@onecx/angular-utils'
 import { DocumentQuickUploadFormComponent } from './document-quick-upload-form/document-quick-upload-form.component'
 
@@ -44,7 +44,6 @@ enum SortOrder {
     DialogModule,
     ButtonModule,
     AngularAcceleratorModule,
-    CommonModule,
     PortalPageComponent
   ],
   templateUrl: './document-quick-upload.component.html',

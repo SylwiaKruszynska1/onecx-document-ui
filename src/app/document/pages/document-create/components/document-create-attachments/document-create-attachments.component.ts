@@ -10,7 +10,6 @@ import { TableModule } from 'primeng/table'
 import { TooltipModule } from 'primeng/tooltip'
 import { DatePickerModule } from 'primeng/datepicker'
 import { FileUploadComponent } from 'src/app/document/components/file-upload/file-upload.component'
-import { CommonModule } from '@angular/common'
 import { FloatLabelModule } from 'primeng/floatlabel'
 import { FluidModule } from 'primeng/fluid'
 
@@ -19,7 +18,6 @@ import { FluidModule } from 'primeng/fluid'
   imports: [
     TranslateModule,
     ReactiveFormsModule,
-    CommonModule,
     ButtonModule,
     InputTextModule,
     TooltipModule,

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { CommonModule } from '@angular/common'
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { DocumentAttachmentFormValue } from '../../../../types/document-create.types'
 import { formatBytes } from '../../../../utils/attachment.utils'
@@ -14,7 +13,6 @@ import { InputTextModule } from 'primeng/inputtext'
 @Component({
   selector: 'app-document-details-attachment-list',
   imports: [
-    CommonModule,
     TranslateModule,
     FloatLabelModule,
     TableModule,

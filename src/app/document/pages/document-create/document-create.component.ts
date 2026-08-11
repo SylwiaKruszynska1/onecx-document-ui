@@ -18,7 +18,7 @@ import {
   selectCreateMimeTypes,
   selectDocumentCreateViewModel
 } from './document-create.selectors'
-import { AsyncPipe, CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { PortalPageComponent } from '@onecx/angular-utils'
 import { LetDirective } from '@ngrx/component'
 import { DocumentCreateCharacteristicsComponent } from './components/document-create-characteristics/document-create-characteristics.component'
@@ -33,7 +33,6 @@ import { StepsModule } from 'primeng/steps'
     AsyncPipe,
     PortalPageComponent,
     AngularAcceleratorModule,
-    CommonModule,
     StepsModule,
     LetDirective,
     DocumentCreateCharacteristicsComponent,

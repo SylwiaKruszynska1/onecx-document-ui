@@ -21,7 +21,7 @@ import { CheckboxModule } from 'primeng/checkbox'
 import { DialogModule } from 'primeng/dialog'
 import { InputTextModule } from 'primeng/inputtext'
 import { Textarea } from 'primeng/inputtextarea'
-import { AsyncPipe, CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { PortalPageComponent } from '@onecx/angular-utils'
 import { LetDirective } from '@ngrx/component'
 import { ButtonModule } from 'primeng/button'
@@ -31,7 +31,6 @@ import { documentTypeSearchColumns } from './document-type-search.columns'
   selector: 'app-document-type-search',
   templateUrl: './document-type-search.component.html',
   imports: [
-    CommonModule,
     TranslateModule,
     CheckboxModule,
     ButtonModule,

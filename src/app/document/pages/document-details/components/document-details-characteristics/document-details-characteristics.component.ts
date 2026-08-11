@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
-import { CommonModule } from '@angular/common'
 import { FormArray, ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
 import { ButtonModule } from 'primeng/button'
@@ -13,7 +12,6 @@ import { FloatLabelModule } from 'primeng/floatlabel'
 @Component({
   selector: 'app-document-details-characteristics',
   imports: [
-    CommonModule,
     TranslateModule,
     FluidModule,
     ReactiveFormsModule,

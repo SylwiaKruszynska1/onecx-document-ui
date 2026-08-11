@@ -13,10 +13,8 @@
           type="text"
           id="name"
           class="w-full"
-          [ngClass]="{
-            'ng-invalid': isInvalid('name'),
-            'ng-dirty': isInvalid('name')
-          }"
+          [class.ng-invalid]="isInvalid('name')"
+          [class.ng-dirty]="isInvalid('name')"
           formControlName="name"
           [pTooltip]="'DOCUMENT_DETAILS.FORM.NAME.TOOLTIP' | translate"
           tooltipPosition="top"
@@ -31,10 +29,8 @@
         <p-select
           id="type"
           class="w-full"
-          [ngClass]="{
-            'ng-invalid': isInvalid('type'),
-            'ng-dirty': isInvalid('type')
-          }"
+          [class.ng-invalid]="isInvalid('type')"
+          [class.ng-dirty]="isInvalid('type')"
           formControlName="type"
           [options]="availableTypes"
           optionLabel="label"
@@ -70,10 +66,8 @@
           pInputText
           id="channel"
           class="w-full"
-          [ngClass]="{
-            'ng-invalid': isInvalid('channel'),
-            'ng-dirty': isInvalid('channel')
-          }"
+          [class.ng-invalid]="isInvalid('channel')"
+          [class.ng-dirty]="isInvalid('channel')"
           formControlName="channel"
           [pTooltip]="'DOCUMENT_DETAILS.FORM.CHANNEL.TOOLTIP' | translate"
           tooltipPosition="top"
@@ -93,10 +87,8 @@
           optionLabel="label"
           optionValue="value"
           appendTo="body"
-          [ngClass]="{
-            'ng-invalid': isInvalid('status'),
-            'ng-dirty': isInvalid('status')
-          }"
+          [class.ng-invalid]="isInvalid('status')"
+          [class.ng-dirty]="isInvalid('status')"
           [pTooltip]="'DOCUMENT_DETAILS.FORM.STATUS.TOOLTIP' | translate"
           tooltipPosition="top"
           [ariaLabel]="'DOCUMENT_DETAILS.FORM.STATUS.ARIA-LABEL' | translate"

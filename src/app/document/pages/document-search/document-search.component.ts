@@ -26,7 +26,7 @@ import { DocumentSearchCriteriaSchema, documentSearchCriteriasSchema } from './d
 import { selectDocumentSearchViewModel } from './document-search.selectors'
 import { DocumentSearchViewModel } from './document-search.viewmodel'
 import { TranslateModule } from '@ngx-translate/core'
-import { AsyncPipe, CommonModule } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { PortalPageComponent } from '@onecx/angular-utils'
 import { LetDirective } from '@ngrx/component'
 
@@ -39,7 +39,6 @@ import { LetDirective } from '@ngrx/component'
     AsyncPipe,
     PortalPageComponent,
     LetDirective,
-    CommonModule,
     ReactiveFormsModule
   ],
   templateUrl: './document-search.component.html',

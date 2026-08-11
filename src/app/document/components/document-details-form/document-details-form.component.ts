@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core'
 import { InputTextModule } from 'primeng/inputtext'
 import { SelectModule } from 'primeng/select'
 import { TooltipModule } from 'primeng/tooltip'
-import { CommonModule } from '@angular/common'
 import { FloatLabelModule } from 'primeng/floatlabel'
 import { FluidModule } from 'primeng/fluid'
 
@@ -19,7 +18,6 @@ import { FluidModule } from 'primeng/fluid'
     InputTextModule,
     SelectModule,
     TooltipModule,
-    CommonModule,
     FloatLabelModule,
     FluidModule
   ],

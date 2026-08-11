@@ -3,7 +3,9 @@
   [helpArticleId]="'DOCUMENT_TYPE_SEARCH.HELP_ARTICLE_ID' | translate"
   *ngrxLet="viewModel$; let vm"
 >
-  <ocx-loading-indicator *ngIf="vm.loadingIndicator"></ocx-loading-indicator>
+  @if (vm.loadingIndicator) {
+    <ocx-loading-indicator></ocx-loading-indicator>
+  }
   <ocx-search-header
     [header]="'DOCUMENT_TYPE_SEARCH.HEADER' | translate"
     [subheader]="'DOCUMENT_TYPE_SEARCH.SUB_HEADER' | translate"
