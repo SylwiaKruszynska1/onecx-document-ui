@@ -1,5 +1,5 @@
-import { DocumentDetailsActions } from './document-details.actions'
 import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
+import { DocumentDetailsActions } from './document-details.actions'
 import * as reducers from './document-details.reducers'
 
 describe('DocumentDetailsReducer', () => {

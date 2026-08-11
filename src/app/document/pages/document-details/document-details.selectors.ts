@@ -1,12 +1,14 @@
 import { createSelector } from '@ngrx/store'
+import { SelectItem } from 'primeng/api'
+
 import { createChildSelectors } from '@onecx/ngrx-accelerator'
+
 import { selectBackNavigationPossible } from 'src/app/shared/selectors/onecx.selectors'
 import { DocumentDetail } from 'src/app/shared/generated'
 import { documentFeature } from '../../document.reducers'
 import { documentCreateOperationsSelectors } from '../../operations/document-create-operations.selectors'
 import { initialState } from './document-details.reducers'
 import { DocumentDetailsViewModel } from './document-details.viewmodel'
-import { SelectItem } from 'primeng/api'
 
 export const documentDetailsSelectors = createChildSelectors(documentFeature.selectDetails, initialState)
 

@@ -1,13 +1,15 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core'
 import { FormArray, ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
+
 import { ButtonModule } from 'primeng/button'
+import { FloatLabelModule } from 'primeng/floatlabel'
 import { FluidModule } from 'primeng/fluid'
 import { InputTextModule } from 'primeng/inputtext'
 import { TableModule } from 'primeng/table'
 import { TooltipModule } from 'primeng/tooltip'
+
 import { DocumentCharacteristicsFormGroup } from 'src/app/document/types/document-create.types'
-import { FloatLabelModule } from 'primeng/floatlabel'
 
 @Component({
   selector: 'app-document-details-characteristics',

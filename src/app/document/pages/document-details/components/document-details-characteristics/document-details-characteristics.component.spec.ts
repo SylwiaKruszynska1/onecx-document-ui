@@ -1,6 +1,7 @@
 import { FormArray } from '@angular/forms'
-import { DocumentDetailsCharacteristicsComponent } from './document-details-characteristics.component'
+
 import { createCharacteristicFormGroup } from 'src/app/document/utils/document-details-form.factory'
+import { DocumentDetailsCharacteristicsComponent } from './document-details-characteristics.component'
 
 describe('DocumentDetailsCharacteristicsComponent', () => {
   let component: DocumentDetailsCharacteristicsComponent

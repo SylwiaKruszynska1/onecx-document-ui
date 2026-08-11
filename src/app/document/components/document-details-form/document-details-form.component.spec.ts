@@ -1,7 +1,6 @@
 import { FormGroup } from '@angular/forms'
 
 import { LifeCycleState } from 'src/app/shared/generated/model/lifeCycleState'
-
 import { DocumentDetailsFormComponent } from './document-details-form.component'
 import { createDocumentDetailsSectionForm } from '../../utils/document-details-form.factory'
 

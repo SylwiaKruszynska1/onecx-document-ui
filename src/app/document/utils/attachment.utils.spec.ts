@@ -1,4 +1,5 @@
 import { FormControl, FormGroup } from '@angular/forms'
+
 import { formatBytes, noSpecialCharacters, trimSpaces } from './attachment.utils'
 
 describe('attachment.utils', () => {

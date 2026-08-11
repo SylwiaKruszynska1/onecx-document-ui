@@ -4,13 +4,13 @@ import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { concatLatestFrom } from '@ngrx/operators'
 import { routerNavigatedAction } from '@ngrx/router-store'
 import { Action, Store } from '@ngrx/store'
-import { filterForNavigatedTo } from '@onecx/ngrx-accelerator'
 import equal from 'fast-deep-equal'
 import { catchError, forkJoin, map, mergeMap, of, switchMap, tap } from 'rxjs'
 
 import { PrimeIcons } from 'primeng/api'
 
 import { DialogState, ExportDataService, PortalDialogService } from '@onecx/angular-accelerator'
+import { filterForNavigatedTo } from '@onecx/ngrx-accelerator'
 import { PortalMessageService } from '@onecx/angular-integration-interface'
 
 import { selectUrl } from 'src/app/shared/selectors/router.selectors'

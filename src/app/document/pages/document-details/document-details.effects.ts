@@ -4,11 +4,13 @@ import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { concatLatestFrom } from '@ngrx/operators'
 import { routerNavigatedAction } from '@ngrx/router-store'
 import { Action, Store } from '@ngrx/store'
+import { catchError, filter, map, mergeMap, of, switchMap, tap } from 'rxjs'
+import { PrimeIcons } from 'primeng/api'
+
 import { filterForNavigatedTo } from '@onecx/ngrx-accelerator'
 import { PortalMessageService } from '@onecx/angular-integration-interface'
 import { DialogState, PortalDialogService } from '@onecx/angular-accelerator'
-import { PrimeIcons } from 'primeng/api'
-import { catchError, filter, map, mergeMap, of, switchMap, tap } from 'rxjs'
+
 import { selectBackNavigationPossible } from 'src/app/shared/selectors/onecx.selectors'
 import { selectRouteParam, selectUrl } from 'src/app/shared/selectors/router.selectors'
 import {
@@ -21,9 +23,6 @@ import {
   LifeCycleState,
   UploadAttachmentPresignedUrlRequest
 } from 'src/app/shared/generated'
-import { DocumentDetailsActions } from './document-details.actions'
-import { DocumentDetailsComponent } from './document-details.component'
-import { documentDetailsSelectors, selectDocumentDetailsViewModel } from './document-details.selectors'
 import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 import { ExternalFileHandlerService } from '../../service/external-file-handler.service'
 import {
@@ -32,6 +31,9 @@ import {
   DocumentCharacteristicFormValue,
   DocumentDetailsFormValue
 } from '../../types/document-create.types'
+import { DocumentDetailsActions } from './document-details.actions'
+import { DocumentDetailsComponent } from './document-details.component'
+import { documentDetailsSelectors, selectDocumentDetailsViewModel } from './document-details.selectors'
 import { RetryFileUploadDialogComponent } from './dialog/retry-file-upload-dialog/retry-file-upload-dialog.component'
 
 @Injectable()

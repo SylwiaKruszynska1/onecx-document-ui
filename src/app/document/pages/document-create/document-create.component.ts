@@ -1,15 +1,15 @@
+import { AsyncPipe } from '@angular/common'
+import { PortalPageComponent } from '@onecx/angular-utils'
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { Store } from '@ngrx/store'
 import { TranslateModule, TranslateService } from '@ngx-translate/core'
-import { AngularAcceleratorModule, BreadcrumbService } from '@onecx/angular-accelerator'
-import { SelectItem, MenuItem } from 'primeng/api'
+import { LetDirective } from '@ngrx/component'
 import { Observable } from 'rxjs'
-import { DocumentCreateStep } from '../../types/document-create-step.enum'
-import {
-  AttachmentDraft,
-  DocumentCharacteristicFormValue,
-  DocumentCreateDetailsStepData
-} from '../../types/document-create.types'
+import { StepsModule } from 'primeng/steps'
+import { SelectItem, MenuItem } from 'primeng/api'
+
+import { AngularAcceleratorModule, BreadcrumbService } from '@onecx/angular-accelerator'
+
 import { DocumentCreateActions } from './document-create.actions'
 import { DocumentCreateViewModel } from './document-create.viewmodel'
 import {
@@ -18,13 +18,15 @@ import {
   selectCreateMimeTypes,
   selectDocumentCreateViewModel
 } from './document-create.selectors'
-import { AsyncPipe } from '@angular/common'
-import { PortalPageComponent } from '@onecx/angular-utils'
-import { LetDirective } from '@ngrx/component'
 import { DocumentCreateCharacteristicsComponent } from './components/document-create-characteristics/document-create-characteristics.component'
 import { DocumentCreateAttachmentsComponent } from './components/document-create-attachments/document-create-attachments.component'
 import { DocumentCreateDetailsFormComponent } from './components/document-create-details-form/document-create-details-form.component'
-import { StepsModule } from 'primeng/steps'
+import { DocumentCreateStep } from '../../types/document-create-step.enum'
+import {
+  AttachmentDraft,
+  DocumentCharacteristicFormValue,
+  DocumentCreateDetailsStepData
+} from '../../types/document-create.types'
 
 @Component({
   selector: 'app-document-create',

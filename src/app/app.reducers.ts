@@ -1,7 +1,9 @@
 import { routerReducer } from '@ngrx/router-store'
 import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store'
-import { lazyLoadingMergeReducer, oneCxReducer } from '@onecx/ngrx-accelerator'
 import { localStorageSync } from 'ngrx-store-localstorage'
+
+import { lazyLoadingMergeReducer, oneCxReducer } from '@onecx/ngrx-accelerator'
+
 import { State } from './app.state'
 
 export const reducers: ActionReducerMap<State> = {

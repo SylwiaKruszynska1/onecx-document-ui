@@ -1,7 +1,8 @@
 import { createReducer, on } from '@ngrx/store'
+
+import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 import { DocumentDetailsActions } from './document-details.actions'
 import { DocumentDetailsState } from './document-details.state'
-import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 
 export const initialState: DocumentDetailsState = {
   details: undefined,

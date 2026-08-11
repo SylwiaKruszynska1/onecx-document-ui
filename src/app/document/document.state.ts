@@ -4,6 +4,7 @@ import { DocumentDetailsState } from './pages/document-details/document-details.
 import { DocumentQuickUploadState } from './pages/document-quick-upload/document-quick-upload.state'
 import { DocumentSearchState } from './pages/document-search/document-search.state'
 import { DocumentTypeSearchState } from './pages/document-type-search/document-type-search.state'
+
 export interface DocumentState {
   operations: DocumentCreateOperationsState
   create: DocumentCreateState

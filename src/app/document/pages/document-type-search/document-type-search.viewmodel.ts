@@ -4,6 +4,7 @@ import {
   RowListGridData,
   SearchHeaderComponentState
 } from '@onecx/angular-accelerator'
+
 import { DocumentType } from 'src/app/shared/generated'
 
 export interface DocumentTypeSearchViewModel {

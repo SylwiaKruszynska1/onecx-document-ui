@@ -2,11 +2,13 @@
 import { Component, OnInit, Output, Input, EventEmitter, ChangeDetectionStrategy } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
+
 import { SelectItem } from 'primeng/api'
 import { FloatLabelModule } from 'primeng/floatlabel'
 import { FluidModule } from 'primeng/fluid'
 import { InputTextModule } from 'primeng/inputtext'
 import { SelectModule } from 'primeng/select'
+
 import { FileUploadComponent } from 'src/app/document/components/file-upload/file-upload.component'
 import { AttachmentData } from 'src/app/document/types/document-create.types'
 import { noSpecialCharacters, trimSpaces } from 'src/app/document/utils/attachment.utils'

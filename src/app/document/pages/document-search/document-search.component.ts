@@ -1,9 +1,11 @@
+import { AsyncPipe } from '@angular/common'
 import { ChangeDetectionStrategy, Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
+import { LetDirective } from '@ngrx/component'
 import { Store } from '@ngrx/store'
+import { TranslateModule } from '@ngx-translate/core'
 import { map, Observable } from 'rxjs'
-
 import { PrimeIcons, SelectItem } from 'primeng/api'
 
 import {
@@ -18,6 +20,8 @@ import {
   SearchHeaderComponentState
 } from '@onecx/angular-accelerator'
 import { UserService } from '@onecx/angular-integration-interface'
+import { PortalPageComponent } from '@onecx/angular-utils'
+
 import { LifeCycleState } from 'src/app/shared/generated'
 import { DocumentSearchCriteriaComponent } from './components/document-search-criteria/document-search-criteria.component'
 import { DocumentSearchActions } from './document-search.actions'
@@ -25,10 +29,6 @@ import { documentSearchColumns } from './document-search.columns'
 import { DocumentSearchCriteriaSchema, documentSearchCriteriasSchema } from './document-search.parameters'
 import { selectDocumentSearchViewModel } from './document-search.selectors'
 import { DocumentSearchViewModel } from './document-search.viewmodel'
-import { TranslateModule } from '@ngx-translate/core'
-import { AsyncPipe } from '@angular/common'
-import { PortalPageComponent } from '@onecx/angular-utils'
-import { LetDirective } from '@ngrx/component'
 
 @Component({
   selector: 'app-document-search',

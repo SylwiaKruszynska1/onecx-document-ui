@@ -1,17 +1,19 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
-import { SelectItem } from 'primeng/api'
-import { AttachmentDraft } from '../../../../types/document-create.types'
-import { AttachmentFormGroup } from './document-create-attachments.types'
 import { TranslateModule } from '@ngx-translate/core'
+
+import { SelectItem } from 'primeng/api'
 import { ButtonModule } from 'primeng/button'
+import { DatePickerModule } from 'primeng/datepicker'
+import { FloatLabelModule } from 'primeng/floatlabel'
+import { FluidModule } from 'primeng/fluid'
 import { InputTextModule } from 'primeng/inputtext'
 import { TableModule } from 'primeng/table'
 import { TooltipModule } from 'primeng/tooltip'
-import { DatePickerModule } from 'primeng/datepicker'
+
 import { FileUploadComponent } from 'src/app/document/components/file-upload/file-upload.component'
-import { FloatLabelModule } from 'primeng/floatlabel'
-import { FluidModule } from 'primeng/fluid'
+import { AttachmentFormGroup } from './document-create-attachments.types'
+import { AttachmentDraft } from '../../../../types/document-create.types'
 
 @Component({
   selector: 'app-document-create-attachments',

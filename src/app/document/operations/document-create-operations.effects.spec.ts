@@ -4,20 +4,22 @@ import { provideMockActions } from '@ngrx/effects/testing'
 import { routerNavigatedAction } from '@ngrx/router-store'
 import { Action, Store } from '@ngrx/store'
 import { MockStore, provideMockStore } from '@ngrx/store/testing'
-import { AppStateService } from '@onecx/angular-integration-interface'
-import { provideAppStateServiceMock } from '@onecx/angular-integration-interface/mocks'
 import { firstValueFrom, of, ReplaySubject, throwError } from 'rxjs'
 import { take } from 'rxjs/operators'
+
+import { AppStateService } from '@onecx/angular-integration-interface'
+import { provideAppStateServiceMock } from '@onecx/angular-integration-interface/mocks'
+
 import {
   DocumentControllerAPIService,
   DocumentTypeControllerAPIService,
   SupportedMimeTypeControllerAPIService
 } from 'src/app/shared/generated'
-import { ExternalFileHandlerService } from '../service/external-file-handler.service'
 import { DocumentCreateOperationsActions } from './document-create-operations.actions'
 import { DocumentCreateOperationsEffects } from './document-create-operations.effects'
 import { documentCreateOperationsSelectors } from './document-create-operations.selectors'
 import { initialState as operationsInitialState } from './document-create-operations.reducers'
+import { ExternalFileHandlerService } from '../service/external-file-handler.service'
 
 describe('DocumentCreateOperationsEffects', () => {
   let actions$: ReplaySubject<Action>

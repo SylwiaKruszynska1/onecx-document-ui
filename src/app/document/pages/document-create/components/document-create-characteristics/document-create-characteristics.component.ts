@@ -1,17 +1,19 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { FormArray, ReactiveFormsModule } from '@angular/forms'
+import { TranslateModule } from '@ngx-translate/core'
+
+import { ButtonModule } from 'primeng/button'
+import { FloatLabelModule } from 'primeng/floatlabel'
+import { FluidModule } from 'primeng/fluid'
+import { InputTextModule } from 'primeng/inputtext'
+import { TableModule } from 'primeng/table'
+import { TooltipModule } from 'primeng/tooltip'
+
 import {
   DocumentCharacteristicFormValue,
   DocumentCharacteristicsFormGroup
 } from '../../../../types/document-create.types'
 import { createCharacteristicFormGroup } from '../../../../utils/document-details-form.factory'
-import { TranslateModule } from '@ngx-translate/core'
-import { ButtonModule } from 'primeng/button'
-import { InputTextModule } from 'primeng/inputtext'
-import { TableModule } from 'primeng/table'
-import { TooltipModule } from 'primeng/tooltip'
-import { FloatLabelModule } from 'primeng/floatlabel'
-import { FluidModule } from 'primeng/fluid'
 
 @Component({
   selector: 'app-document-create-characteristics',

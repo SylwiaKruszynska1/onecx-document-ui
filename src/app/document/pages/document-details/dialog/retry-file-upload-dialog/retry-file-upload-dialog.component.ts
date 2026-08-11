@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
 import { TranslateModule } from '@ngx-translate/core'
+
 import { DialogResult } from '@onecx/angular-accelerator'
+
 import { FileUploadComponent } from 'src/app/document/components/file-upload/file-upload.component'
 
 @Component({

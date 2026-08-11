@@ -3,10 +3,20 @@ import { provideHttpClientTesting } from '@angular/common/http/testing'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { ActivatedRoute } from '@angular/router'
 import { LetDirective } from '@ngrx/component'
 import { Store, StoreModule } from '@ngrx/store'
 import { MockStore, provideMockStore } from '@ngrx/store/testing'
 import { TranslateService } from '@ngx-translate/core'
+import { TranslateTestingModule } from 'ngx-translate-testing'
+
+import { ButtonModule } from 'primeng/button'
+import { CheckboxModule } from 'primeng/checkbox'
+import { DialogModule } from 'primeng/dialog'
+import { DialogService } from 'primeng/dynamicdialog'
+import { InputTextModule } from 'primeng/inputtext'
+import { Textarea } from 'primeng/inputtextarea'
+
 import { provideAppStateServiceMock, provideUserServiceMock } from '@onecx/angular-integration-interface/mocks'
 import {
   AngularAcceleratorModule,
@@ -17,20 +27,14 @@ import {
 } from '@onecx/angular-accelerator'
 import { HAS_PERMISSION_CHECKER } from '@onecx/angular-utils'
 import { UserService } from '@onecx/angular-integration-interface'
-import { TranslateTestingModule } from 'ngx-translate-testing'
-import { ButtonModule } from 'primeng/button'
-import { CheckboxModule } from 'primeng/checkbox'
-import { DialogModule } from 'primeng/dialog'
-import { DialogService } from 'primeng/dynamicdialog'
-import { InputTextModule } from 'primeng/inputtext'
-import { Textarea } from 'primeng/inputtextarea'
+
 import { DocumentTypeSearchActions } from './document-type-search.actions'
 import { documentTypeSearchColumns } from './document-type-search.columns'
 import { DocumentTypeSearchComponent } from './document-type-search.component'
 import { initialState } from './document-type-search.reducers'
 import { selectDocumentTypeSearchViewModel } from './document-type-search.selectors'
 import { DocumentTypeSearchViewModel } from './document-type-search.viewmodel'
-import { ActivatedRoute } from '@angular/router'
+
 describe('DocumentTypeSearchComponent', () => {
   let component: DocumentTypeSearchComponent
   let fixture: ComponentFixture<DocumentTypeSearchComponent>

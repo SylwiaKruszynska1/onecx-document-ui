@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store'
+
 import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 import { DocumentQuickUploadState } from './document-quick-upload.state'
 

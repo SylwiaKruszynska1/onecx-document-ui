@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router'
+
 import { DocumentCreateComponent } from './pages/document-create/document-create.component'
 import { DocumentDetailsComponent } from './pages/document-details/document-details.component'
 import { DocumentQuickUploadComponent } from './pages/document-quick-upload/document-quick-upload.component'

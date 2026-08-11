@@ -7,15 +7,16 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store'
 import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
+
 import { AngularAuthModule } from '@onecx/angular-auth'
 import { AppStateService, APP_CONFIG, ConfigurationService } from '@onecx/angular-integration-interface'
 import { AngularAcceleratorModule, providePortalDialogService } from '@onecx/angular-accelerator'
 import { createTranslateLoader, provideTranslationPathFromMeta } from '@onecx/angular-utils'
+
 import { environment } from 'src/environments/environment'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { metaReducers, reducers } from './app.reducers'
-
 import { Configuration } from './shared/generated'
 import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
 

@@ -1,5 +1,4 @@
 import { createSelector } from '@ngrx/store'
-
 import { SelectItem } from 'primeng/api'
 
 import { createChildSelectors } from '@onecx/ngrx-accelerator'
