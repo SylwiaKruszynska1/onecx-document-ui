@@ -53,13 +53,6 @@
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],
       "rules": {}
-    },
-    {
-      "files": ["**/*.harness.ts"],
-      "parserOptions": {
-        "project": []
-      },
-      "rules": {}
     }
   ]
 }
