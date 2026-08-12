@@ -1,15 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core'
-import { SelectItem } from 'primeng/api'
-import { LifeCycleState } from 'src/app/shared/generated/model/lifeCycleState'
-import { DocumentCreateDetailsFormGroup, DocumentDetailsFormGroup } from '../../types/document-create.types'
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
+
+import { SelectItem } from 'primeng/api'
 import { InputTextModule } from 'primeng/inputtext'
 import { SelectModule } from 'primeng/select'
 import { TooltipModule } from 'primeng/tooltip'
-import { CommonModule } from '@angular/common'
 import { FloatLabelModule } from 'primeng/floatlabel'
 import { FluidModule } from 'primeng/fluid'
+
+import { LifeCycleState } from 'src/app/shared/generated/model/lifeCycleState'
+import { DocumentCreateDetailsFormGroup, DocumentDetailsFormGroup } from '../../types/document-create.types'
 
 @Component({
   selector: 'app-document-details-form',
@@ -19,10 +20,10 @@ import { FluidModule } from 'primeng/fluid'
     InputTextModule,
     SelectModule,
     TooltipModule,
-    CommonModule,
     FloatLabelModule,
     FluidModule
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-details-form.component.html',
   styleUrls: ['./document-details-form.component.scss']
 })

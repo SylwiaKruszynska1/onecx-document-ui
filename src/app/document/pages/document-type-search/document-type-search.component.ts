@@ -1,6 +1,19 @@
-import { Component, OnInit } from '@angular/core'
+import { AsyncPipe } from '@angular/common'
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
+import { LetDirective } from '@ngrx/component'
 import { Store } from '@ngrx/store'
+import { TranslateModule } from '@ngx-translate/core'
+import { map, Observable } from 'rxjs'
+
+import { ButtonModule } from 'primeng/button'
+import { CheckboxModule } from 'primeng/checkbox'
+import { DialogModule } from 'primeng/dialog'
+import { FloatLabelModule } from 'primeng/floatlabel'
+import { InputTextModule } from 'primeng/inputtext'
+import { PrimeIcons } from 'primeng/api'
+import { Textarea } from 'primeng/inputtextarea'
+
 import {
   Action,
   AngularAcceleratorModule,
@@ -10,28 +23,17 @@ import {
   RowListGridData,
   SearchHeaderComponentState
 } from '@onecx/angular-accelerator'
-import { PrimeIcons } from 'primeng/api'
-import { map, Observable } from 'rxjs'
+import { PortalPageComponent } from '@onecx/angular-utils'
+
 import { DocumentType } from 'src/app/shared/generated'
 import { DocumentTypeSearchActions } from './document-type-search.actions'
 import { selectDocumentTypeSearchViewModel } from './document-type-search.selectors'
 import { DocumentTypeSearchViewModel } from './document-type-search.viewmodel'
-import { TranslateModule } from '@ngx-translate/core'
-import { CheckboxModule } from 'primeng/checkbox'
-import { DialogModule } from 'primeng/dialog'
-import { InputTextModule } from 'primeng/inputtext'
-import { Textarea } from 'primeng/inputtextarea'
-import { AsyncPipe, CommonModule } from '@angular/common'
-import { PortalPageComponent } from '@onecx/angular-utils'
-import { LetDirective } from '@ngrx/component'
-import { ButtonModule } from 'primeng/button'
 import { documentTypeSearchColumns } from './document-type-search.columns'
 
 @Component({
   selector: 'app-document-type-search',
-  templateUrl: './document-type-search.component.html',
   imports: [
-    CommonModule,
     TranslateModule,
     CheckboxModule,
     ButtonModule,
@@ -42,8 +44,11 @@ import { documentTypeSearchColumns } from './document-type-search.columns'
     AngularAcceleratorModule,
     AsyncPipe,
     PortalPageComponent,
-    LetDirective
-  ]
+    LetDirective,
+    FloatLabelModule
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './document-type-search.component.html'
 })
 export class DocumentTypeSearchComponent implements OnInit {
   viewModel$: Observable<DocumentTypeSearchViewModel>

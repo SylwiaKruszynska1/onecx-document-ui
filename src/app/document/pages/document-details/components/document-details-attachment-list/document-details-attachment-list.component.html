@@ -33,44 +33,42 @@
         <ng-template pTemplate="body" let-attachmentFormGroup>
           <tr [formGroup]="attachmentFormGroup">
             <td>
-              <ng-container *ngIf="editMode; else nameText">
+              @if (editMode) {
                 <p-floatlabel variant="on">
                   <input
-                    id="attachment-name"
+                    id="dm_document_details_attachment_list_name"
                     pInputText
                     type="text"
                     formControlName="name"
                     class="w-full"
                     [ariaLabel]="'DOCUMENT_DETAILS.ATTACHMENTS.COLUMNS.NAME' | translate"
                   />
-                  <label for="attachment-name" class="sr-only">
+                  <label for="dm_document_details_attachment_list_name" class="sr-only">
                     {{ 'DOCUMENT_DETAILS.ATTACHMENTS.COLUMNS.NAME' | translate }}
                   </label>
                 </p-floatlabel>
-              </ng-container>
-              <ng-template #nameText>
-                {{ attachmentFormGroup.get('name')?.value || '-' }}
-              </ng-template>
+              } @else {
+                {{ attachmentFormGroup.get('name')?.value || '-' }}s
+              }
             </td>
             <td>
-              <ng-container *ngIf="editMode; else descriptionText">
+              @if (editMode) {
                 <p-floatlabel variant="on">
                   <input
-                    id="attachment-description"
+                    id="dm_document_details_attachment_list_description"
                     pInputText
                     type="text"
                     formControlName="description"
                     class="w-full"
                     [ariaLabel]="'DOCUMENT_DETAILS.ATTACHMENTS.COLUMNS.DESCRIPTION' | translate"
                   />
-                  <label for="attachment-description" class="sr-only">
+                  <label for="dm_document_details_attachment_list_description" class="sr-only">
                     {{ 'DOCUMENT_DETAILS.ATTACHMENTS.COLUMNS.DESCRIPTION' | translate }}
                   </label>
                 </p-floatlabel>
-              </ng-container>
-              <ng-template #descriptionText>
+              } @else {
                 {{ attachmentFormGroup.get('description')?.value || '-' }}
-              </ng-template>
+              }
             </td>
             <td>
               {{ formatBytes(attachmentFormGroup.get('size')?.value) }}
@@ -82,19 +80,19 @@
               {{ getUploadStatusKey(attachmentFormGroup) | translate }}
             </td>
             <td class="text-center">
-              <p-button
-                *ngIf="attachmentFormGroup.get('storageUploadStatus')?.value === true; else retryFileUpload"
-                type="button"
-                icon="pi pi-download"
-                [text]="true"
-                [rounded]="true"
-                [pTooltip]="'DOCUMENT_DETAILS.ATTACHMENTS.ACTIONS.DOWNLOAD' | translate"
-                tooltipPosition="top"
-                [ariaLabel]="'DOCUMENT_DETAILS.ATTACHMENTS.ACTIONS.DOWNLOAD' | translate"
-                [disabled]="!attachmentFormGroup.get('id')?.value"
-                (onClick)="onDownloadClicked(attachmentFormGroup)"
-              ></p-button>
-              <ng-template #retryFileUpload>
+              @if (attachmentFormGroup.get('storageUploadStatus')?.value === true) {
+                <p-button
+                  type="button"
+                  icon="pi pi-download"
+                  [text]="true"
+                  [rounded]="true"
+                  [pTooltip]="'DOCUMENT_DETAILS.ATTACHMENTS.ACTIONS.DOWNLOAD' | translate"
+                  tooltipPosition="top"
+                  [ariaLabel]="'DOCUMENT_DETAILS.ATTACHMENTS.ACTIONS.DOWNLOAD' | translate"
+                  [disabled]="!attachmentFormGroup.get('id')?.value"
+                  (onClick)="onDownloadClicked(attachmentFormGroup)"
+                ></p-button>
+              } @else {
                 <p-button
                   type="button"
                   (onClick)="onRetryUploadClicked(attachmentFormGroup)"
@@ -104,9 +102,8 @@
                   [pTooltip]="'DOCUMENT_DETAILS.ATTACHMENTS.ACTIONS.DOWNLOAD' | translate"
                   tooltipPosition="top"
                   [ariaLabel]="'DOCUMENT_DETAILS.ATTACHMENTS.ACTIONS.DOWNLOAD' | translate"
-                >
-                </p-button>
-              </ng-template>
+                ></p-button>
+              }
             </td>
           </tr>
         </ng-template>

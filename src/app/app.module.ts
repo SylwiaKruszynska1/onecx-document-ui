@@ -1,6 +1,5 @@
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { isDevMode, NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { LetDirective } from '@ngrx/component'
 import { EffectsModule } from '@ngrx/effects'
@@ -8,15 +7,16 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store'
 import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
+
 import { AngularAuthModule } from '@onecx/angular-auth'
 import { AppStateService, APP_CONFIG, ConfigurationService } from '@onecx/angular-integration-interface'
 import { AngularAcceleratorModule, providePortalDialogService } from '@onecx/angular-accelerator'
 import { createTranslateLoader, provideTranslationPathFromMeta } from '@onecx/angular-utils'
+
 import { environment } from 'src/environments/environment'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { metaReducers, reducers } from './app.reducers'
-
 import { Configuration } from './shared/generated'
 import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
 
@@ -24,7 +24,6 @@ import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
   imports: [
     AppComponent,
     AngularAuthModule,
-    BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     LetDirective,
@@ -57,7 +56,8 @@ import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
       useFactory: apiConfigProvider,
       deps: [ConfigurationService, AppStateService]
     },
-    provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/')
+    provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
+    provideHttpClient(withInterceptorsFromDi())
   ]
 })
 export class AppModule {}

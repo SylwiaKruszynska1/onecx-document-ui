@@ -1,20 +1,20 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
-import { CommonModule } from '@angular/common'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { FormArray, FormGroup, ReactiveFormsModule } from '@angular/forms'
-import { DocumentAttachmentFormValue } from '../../../../types/document-create.types'
-import { formatBytes } from '../../../../utils/attachment.utils'
 import { TranslateModule } from '@ngx-translate/core'
-import { TableModule } from 'primeng/table'
+
 import { ButtonModule } from 'primeng/button'
-import { TooltipModule } from 'primeng/tooltip'
 import { FluidModule } from 'primeng/fluid'
 import { FloatLabelModule } from 'primeng/floatlabel'
 import { InputTextModule } from 'primeng/inputtext'
+import { TableModule } from 'primeng/table'
+import { TooltipModule } from 'primeng/tooltip'
+
+import { DocumentAttachmentFormValue } from '../../../../types/document-create.types'
+import { formatBytes } from '../../../../utils/attachment.utils'
 
 @Component({
   selector: 'app-document-details-attachment-list',
   imports: [
-    CommonModule,
     TranslateModule,
     FloatLabelModule,
     TableModule,
@@ -24,6 +24,7 @@ import { InputTextModule } from 'primeng/inputtext'
     ReactiveFormsModule,
     InputTextModule
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-details-attachment-list.component.html',
   styleUrl: './document-details-attachment-list.component.scss'
 })

@@ -1,4 +1,5 @@
 import { ColumnType } from '@onecx/angular-accelerator'
+
 import * as selectors from './document-type-search.selectors'
 import { selectResults } from './document-type-search.selectors'
 

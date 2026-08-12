@@ -3,6 +3,7 @@ import {
   InteractiveDataViewComponentState,
   SearchHeaderComponentState
 } from '@onecx/angular-accelerator'
+
 import { DocumentType } from 'src/app/shared/generated'
 
 export interface DocumentTypeSearchState {

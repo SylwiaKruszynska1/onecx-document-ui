@@ -1,7 +1,9 @@
 import { provideHttpClientTesting } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
-import { AngularAcceleratorModule } from '@onecx/angular-accelerator'
 import { TranslateTestingModule } from 'ngx-translate-testing'
+
+import { AngularAcceleratorModule } from '@onecx/angular-accelerator'
+
 import { AppComponent } from './app.component'
 import { provideRouter } from '@angular/router'
 

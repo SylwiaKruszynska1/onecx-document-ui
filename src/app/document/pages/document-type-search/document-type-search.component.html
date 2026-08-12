@@ -3,7 +3,9 @@
   [helpArticleId]="'DOCUMENT_TYPE_SEARCH.HELP_ARTICLE_ID' | translate"
   *ngrxLet="viewModel$; let vm"
 >
-  <ocx-loading-indicator *ngIf="vm.loadingIndicator"></ocx-loading-indicator>
+  @if (vm.loadingIndicator) {
+    <ocx-loading-indicator></ocx-loading-indicator>
+  }
   <ocx-search-header
     [header]="'DOCUMENT_TYPE_SEARCH.HEADER' | translate"
     [subheader]="'DOCUMENT_TYPE_SEARCH.SUB_HEADER' | translate"
@@ -57,35 +59,39 @@
     (visibleChange)="!$event && closeDialog()"
     (onShow)="onDialogShow(vm.editingDocumentType)"
   >
-    <form [formGroup]="documentTypeFormGroup">
-      <div class="field">
-        <label for="documentTypeName">
-          {{ 'DOCUMENT_TYPE_SEARCH.DIALOG.NAME_LABEL' | translate }}
-        </label>
+    <form [formGroup]="documentTypeFormGroup" class="flex flex-column gap-3 pt-1">
+      <p-floatlabel variant="on">
         <input
-          id="documentTypeName"
+          id="dm_document_type_search_documentTypeName"
           type="text"
           pInputText
           class="w-full"
           formControlName="name"
           [ariaLabel]="'DOCUMENT_TYPE_SEARCH.DIALOG.NAME_LABEL' | translate"
         />
-      </div>
-      <div class="field">
-        <label for="documentTypeDescription">
-          {{ 'DOCUMENT_TYPE_SEARCH.DIALOG.DESCRIPTION_LABEL' | translate }}
+        <label for="dm_document_type_search_documentTypeName">
+          {{ 'DOCUMENT_TYPE_SEARCH.DIALOG.NAME_LABEL' | translate }}
         </label>
+      </p-floatlabel>
+      <p-floatlabel variant="on">
         <textarea
-          id="documentTypeDescription"
+          id="dm_document_type_search_documentTypeDescription"
           pInputTextarea
           class="w-full"
           formControlName="description"
           [ariaLabel]="'DOCUMENT_TYPE_SEARCH.DIALOG.DESCRIPTION_LABEL' | translate"
         ></textarea>
-      </div>
-      <div class="field flex align-items-center gap-2">
-        <p-checkbox inputId="documentTypeActiveStatus" formControlName="activeStatus" [binary]="true"></p-checkbox>
-        <label for="documentTypeActiveStatus">
+        <label for="dm_document_type_search_documentTypeDescription">
+          {{ 'DOCUMENT_TYPE_SEARCH.DIALOG.DESCRIPTION_LABEL' | translate }}
+        </label>
+      </p-floatlabel>
+      <div class="flex align-items-center gap-2">
+        <p-checkbox
+          id="dm_document_type_search_documentTypeActiveStatus"
+          formControlName="activeStatus"
+          [binary]="true"
+        ></p-checkbox>
+        <label for="dm_document_type_search_documentTypeActiveStatus">
           {{ 'DOCUMENT_TYPE_SEARCH.DIALOG.ACTIVE_STATUS_LABEL' | translate }}
         </label>
       </div>

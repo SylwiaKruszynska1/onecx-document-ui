@@ -1,5 +1,6 @@
 import { routerNavigatedAction, RouterNavigatedAction } from '@ngrx/router-store'
 import { createReducer, on } from '@ngrx/store'
+
 import { DocumentSearchActions } from './document-search.actions'
 import { documentSearchColumns } from './document-search.columns'
 import { documentSearchCriteriasSchema } from './document-search.parameters'

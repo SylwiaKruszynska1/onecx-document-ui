@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core'
+import { ActivatedRoute, Router } from '@angular/router'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { concatLatestFrom } from '@ngrx/operators'
 import { routerNavigatedAction } from '@ngrx/router-store'
 import { Store } from '@ngrx/store'
+import { catchError, filter, forkJoin, map, mergeMap, of, switchMap } from 'rxjs'
+
+import { AppStateService } from '@onecx/angular-integration-interface'
+
 import {
   Attachment,
   DocumentControllerAPIService,
@@ -14,12 +19,9 @@ import {
   UploadAttachmentPresignedUrlResponse
 } from 'src/app/shared/generated'
 import { DocumentCreateOperationsActions } from './document-create-operations.actions'
-import { catchError, filter, forkJoin, map, mergeMap, of, switchMap } from 'rxjs'
-import { ExternalFileHandlerService } from '../service/external-file-handler.service'
 import { documentCreateOperationsSelectors } from './document-create-operations.selectors'
+import { ExternalFileHandlerService } from '../service/external-file-handler.service'
 import { AttachmentFile } from '../types/document-create.types'
-import { ActivatedRoute, Router } from '@angular/router'
-import { AppStateService } from '@onecx/angular-integration-interface'
 
 @Injectable({ providedIn: 'root' })
 export class DocumentCreateOperationsEffects {

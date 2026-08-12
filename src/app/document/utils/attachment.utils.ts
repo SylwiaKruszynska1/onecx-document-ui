@@ -15,7 +15,7 @@ export function trimSpaces(event: ClipboardEvent, controlName: string, form: For
 
   if (event.clipboardData?.getData('text').startsWith(' ')) {
     const pasteVal = event.clipboardData.getData('text').trim()
-    let value = fieldVal + pasteVal.split('\n').join('')
+    let value = fieldVal + pasteVal.replaceAll('\n', '')
     event.preventDefault()
 
     if (maxlength) {

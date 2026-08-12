@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { TranslateModule } from '@ngx-translate/core'
 import { ButtonModule } from 'primeng/button'
 
 @Component({
   selector: 'app-file-upload',
   imports: [TranslateModule, ButtonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss']
 })

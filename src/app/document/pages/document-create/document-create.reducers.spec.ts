@@ -1,7 +1,7 @@
-import { DocumentCreateStep } from '../../types/document-create-step.enum'
-import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 import { DocumentCreateActions } from './document-create.actions'
 import * as reducers from './document-create.reducers'
+import { DocumentCreateStep } from '../../types/document-create-step.enum'
+import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 
 describe('DocumentCreateReducer', () => {
   describe('enteredPage', () => {

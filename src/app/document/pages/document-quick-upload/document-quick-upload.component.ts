@@ -1,7 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core'
+import { AsyncPipe } from '@angular/common'
 import { FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
+import { Store } from '@ngrx/store'
+import { TranslateModule } from '@ngx-translate/core'
+import { Observable, Subscription } from 'rxjs'
+
 import { PrimeIcons, SelectItem } from 'primeng/api'
+import { ButtonModule } from 'primeng/button'
+import { DialogModule } from 'primeng/dialog'
+import { TooltipModule } from 'primeng/tooltip'
+
+import { PortalPageComponent } from '@onecx/angular-utils'
 import {
   AngularAcceleratorModule,
   BreadcrumbService,
@@ -9,23 +19,16 @@ import {
   DataSortDirection,
   RowListGridData
 } from '@onecx/angular-accelerator'
-import { Observable, Subscription } from 'rxjs'
+
 import { AttachmentCreateUpdate, DocumentCreateUpdate } from 'src/app/shared/generated'
 import { AttachmentData, AttachmentFile } from '../../types/document-create.types'
 import { formatBytes } from '../../utils/attachment.utils'
-import { Store } from '@ngrx/store'
+import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 import {
   documentQuickUploadSelectors,
   selectQuickUploadDocumentTypes,
   selectQuickUploadMimeTypes
 } from './document-quick-upload.selectors'
-import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
-import { TooltipModule } from 'primeng/tooltip'
-import { ButtonModule } from 'primeng/button'
-import { TranslateModule } from '@ngx-translate/core'
-import { DialogModule } from 'primeng/dialog'
-import { AsyncPipe, CommonModule } from '@angular/common'
-import { PortalPageComponent } from '@onecx/angular-utils'
 import { DocumentQuickUploadFormComponent } from './document-quick-upload-form/document-quick-upload-form.component'
 
 enum SortOrder {
@@ -44,9 +47,9 @@ enum SortOrder {
     DialogModule,
     ButtonModule,
     AngularAcceleratorModule,
-    CommonModule,
     PortalPageComponent
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-quick-upload.component.html',
   styleUrls: ['./document-quick-upload.component.scss']
 })
