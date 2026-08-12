@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { isDevMode, NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -38,7 +38,6 @@ import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
       traceLimit: 75
     }),
     EffectsModule.forRoot([]),
-    HttpClientModule,
     AngularAcceleratorModule,
     TranslateModule.forRoot({
       extend: true,
@@ -51,6 +50,7 @@ import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
   ],
   providers: [
     providePortalDialogService(),
+    provideHttpClient(withInterceptorsFromDi()),
     { provide: APP_CONFIG, useValue: environment },
     {
       provide: Configuration,

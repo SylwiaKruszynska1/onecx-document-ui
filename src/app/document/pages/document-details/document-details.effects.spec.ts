@@ -561,7 +561,7 @@ describe('DocumentDetailsEffects', () => {
     it('should dispatch backNavigationStarted and call globalThis.history.back when navigation is possible', (done) => {
       store.overrideSelector(selectBackNavigationPossible, true)
       store.refreshState()
-      const historyBackSpy = jest.spyOn(globalThis.history, 'back').mockImplementation(() => {})
+      const historyBackSpy = jest.spyOn(globalThis.history, 'back').mockImplementation(() => undefined)
 
       effects.navigateBack$.pipe(take(1)).subscribe((action) => {
         expect(action).toEqual(DocumentDetailsActions.backNavigationStarted())
@@ -602,7 +602,6 @@ describe('DocumentDetailsEffects', () => {
       documentService.updateDocument.mockReturnValue(of({ id: 'doc-1' } as any))
 
       effects.saveButtonClicked$.pipe(take(2)).subscribe({
-        next: () => {},
         complete: () => {
           expect(documentService.updateDocument).toHaveBeenCalledWith({
             id: 'doc-1',
@@ -639,7 +638,6 @@ describe('DocumentDetailsEffects', () => {
       documentService.updateDocument.mockReturnValue(of({ id: 'doc-1' } as any))
 
       effects.saveButtonClicked$.pipe(take(2)).subscribe({
-        next: () => {},
         complete: () => {
           expect(documentService.updateDocument).toHaveBeenCalledWith({
             id: 'doc-1',
@@ -683,7 +681,6 @@ describe('DocumentDetailsEffects', () => {
       documentService.updateDocument.mockReturnValue(of({ id: 'doc-1' } as any))
 
       effects.saveButtonClicked$.pipe(take(2)).subscribe({
-        next: () => {},
         complete: () => {
           expect(documentService.updateDocument).toHaveBeenCalledWith({
             id: 'doc-1',
@@ -771,7 +768,6 @@ describe('DocumentDetailsEffects', () => {
       documentService.updateDocument.mockReturnValue(of({ id: 'doc-1' } as any))
 
       effects.saveButtonClicked$.pipe(take(2)).subscribe({
-        next: () => {},
         complete: () => {
           expect(documentService.updateDocument).toHaveBeenCalledWith({
             id: 'doc-1',
@@ -802,7 +798,6 @@ describe('DocumentDetailsEffects', () => {
       documentService.updateDocument.mockReturnValue(of({ id: 'doc-1' } as any))
 
       effects.saveButtonClicked$.pipe(take(2)).subscribe({
-        next: () => {},
         complete: () => {
           expect(documentService.updateDocument).toHaveBeenCalledWith({
             id: 'doc-1',
@@ -1071,7 +1066,6 @@ describe('DocumentDetailsEffects', () => {
       documentService.updateDocument.mockReturnValue(of({ id: 'doc-1' } as any))
 
       effects.saveButtonClicked$.pipe(take(2)).subscribe({
-        next: () => {},
         complete: () => {
           expect(documentService.updateDocument).toHaveBeenCalledWith({
             id: 'doc-1',
@@ -1106,7 +1100,6 @@ describe('DocumentDetailsEffects', () => {
       } as any
 
       effects.saveButtonClicked$.pipe(take(2)).subscribe({
-        next: () => {},
         complete: () => {
           expect(documentService.updateDocument).toHaveBeenCalledWith({
             id: 'doc-1',
@@ -1145,7 +1138,6 @@ describe('DocumentDetailsEffects', () => {
       } as any
 
       effects.saveButtonClicked$.pipe(take(2)).subscribe({
-        next: () => {},
         complete: () => {
           expect(documentService.updateDocument).toHaveBeenCalledWith({
             id: 'doc-1',

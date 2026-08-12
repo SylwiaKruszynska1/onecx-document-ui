@@ -1,5 +1,5 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http'
-import { APP_INITIALIZER, DoBootstrap, Injector, isDevMode, NgModule } from '@angular/core'
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
+import { DoBootstrap, inject, Injector, isDevMode, NgModule, provideAppInitializer } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { Router, RouterModule } from '@angular/router'
@@ -10,7 +10,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 import { AngularAuthModule } from '@onecx/angular-auth'
 import { createAppEntrypoint, initializeRouter } from '@onecx/angular-webcomponents'
-import { provideNavigatedEventStoreConnector } from '@onecx/ngrx-accelerator'
 import { AppStateService, ConfigurationService } from '@onecx/angular-integration-interface'
 import { AngularAcceleratorModule } from '@onecx/angular-accelerator'
 import {
@@ -47,7 +46,6 @@ effectProvidersForWorkaround.forEach((p) => (p.ɵprov.providedIn = null))
     }),
     SharedModule,
     BrowserModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     AngularAuthModule,
     StoreModule.forRoot(reducers, { metaReducers }),
@@ -68,16 +66,14 @@ effectProvidersForWorkaround.forEach((p) => (p.ɵprov.providedIn = null))
       useFactory: apiConfigProvider,
       deps: [ConfigurationService, AppStateService]
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeRouter,
-      multi: true,
-      deps: [Router, AppStateService]
-    },
+    provideAppInitializer(() => {
+      const initializerFn = initializeRouter(inject(Router), inject(AppStateService))
+      return initializerFn()
+    }),
     providePermissionService(),
     provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
-    provideThemeConfig(),
-    provideNavigatedEventStoreConnector()
+    provideHttpClient(withInterceptorsFromDi()),
+    provideThemeConfig()
   ]
 })
 export class OneCXDocumentModule implements DoBootstrap {
