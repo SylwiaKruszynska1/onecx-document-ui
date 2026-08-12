@@ -3,7 +3,7 @@
   (dragover)="allowDrop($event)"
   (drop)="onDrop($event)"
 >
-  <span>{{ 'FILE_UPLOAD.DRAG_DROP' | translate }}</span>
+  <span id="fileInputLabel">{{ 'FILE_UPLOAD.DRAG_DROP' | translate }}</span>
   <span>{{ 'FILE_UPLOAD.OR' | translate }}</span>
 
   <div class="upload-btn-wrapper">
@@ -18,7 +18,7 @@
       [disabled]="disabled"
     ></button>
     <input
-      id="fileInput"
+      aria-labelledby="fileInputLabel"
       type="file"
       [multiple]="multiple"
       [disabled]="disabled"
