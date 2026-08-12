@@ -34,14 +34,14 @@
               @if (editMode) {
                 <p-floatlabel variant="on">
                   <input
-                    id="characteristic-name"
+                    id="dm_document_details_characteristics_name_{{ rowIndex }}"
                     pInputText
                     type="text"
                     formControlName="name"
                     class="w-full"
                     [ariaLabel]="'DOCUMENT_DETAILS.CHARACTERISTICS.COLUMNS.NAME' | translate"
                   />
-                  <label for="characteristic-name" class="sr-only">
+                  <label for="dm_document_details_characteristics_name_{{ rowIndex }}" class="sr-only">
                     {{ 'DOCUMENT_DETAILS.CHARACTERISTICS.COLUMNS.NAME' | translate }}
                   </label>
                 </p-floatlabel>
@@ -53,14 +53,14 @@
               @if (editMode) {
                 <p-floatlabel variant="on">
                   <input
-                    id="characteristic-value"
+                    id="dm_document_details_characteristics_value"
                     pInputText
                     type="text"
                     formControlName="value"
                     class="w-full"
                     [ariaLabel]="'DOCUMENT_DETAILS.CHARACTERISTICS.COLUMNS.VALUE' | translate"
                   />
-                  <label for="characteristic-value" class="sr-only">
+                  <label for="dm_document_details_characteristics_value" class="sr-only">
                     {{ 'DOCUMENT_DETAILS.CHARACTERISTICS.COLUMNS.VALUE' | translate }}
                   </label>
                 </p-floatlabel>

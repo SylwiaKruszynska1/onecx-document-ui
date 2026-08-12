@@ -25,7 +25,8 @@ import { FluidModule } from 'primeng/fluid'
     FluidModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './document-search-criteria.component.html'
+  templateUrl: './document-search-criteria.component.html',
+  styleUrls: ['./document-search-criteria.component.scss']
 })
 export class DocumentSearchCriteriaComponent {
   @ViewChildren(DatePicker) calendars!: QueryList<DatePicker>

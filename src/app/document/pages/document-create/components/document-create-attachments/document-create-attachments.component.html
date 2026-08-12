@@ -52,14 +52,14 @@
             <p-float-label variant="on" controlErrorAnchor>
               <input
                 pInputText
-                id="attachmentName"
+                id="dm_document_create_attachments_name"
                 type="text"
                 class="w-full"
                 [class.ng-invalid]="isFieldInvalid(form, 'name')"
                 [class.ng-dirty]="isFieldInvalid(form, 'name')"
                 formControlName="name"
               />
-              <label for="attachmentName" class="required-label">
+              <label for="dm_document_create_attachments_name" class="required-label">
                 {{ 'DOCUMENT_CREATE.ATTACHMENTS.FORM.NAME.LABEL' | translate }}
               </label>
             </p-float-label>
@@ -70,13 +70,13 @@
             <p-float-label variant="on">
               <input
                 pInputText
-                id="mimeType"
+                id="dm_document_create_attachments_mimeType"
                 type="text"
                 class="w-full"
                 formControlName="mimeType"
-                [attr.disabled]="true"
+                [disabled]="true"
               />
-              <label for="mimeType">
+              <label for="dm_document_create_attachments_mimeType">
                 {{ 'DOCUMENT_CREATE.ATTACHMENTS.FORM.MIME_TYPE.LABEL' | translate }}
               </label>
             </p-float-label>
@@ -85,14 +85,14 @@
           <div class="col-6 mt-2">
             <p-float-label variant="on">
               <p-datepicker
-                inputId="validForEnd"
+                id="dm_document_create_attachments_validForEnd"
                 class="w-full"
                 formControlName="validForEnd"
                 dateFormat="yy-mm-dd"
                 [showIcon]="true"
                 appendTo="body"
               ></p-datepicker>
-              <label for="validForEnd">
+              <label for="dm_document_create_attachments_validForEnd">
                 {{ 'DOCUMENT_CREATE.ATTACHMENTS.FORM.VALIDITY.LABEL' | translate }}
               </label>
             </p-float-label>
@@ -103,12 +103,12 @@
             <p-float-label variant="on">
               <textarea
                 pInputTextarea
-                id="attachmentDescription"
+                id="dm_document_create_attachments_attachmentDescription"
                 class="w-full"
                 rows="3"
                 formControlName="description"
               ></textarea>
-              <label for="attachmentDescription">
+              <label for="dm_document_create_attachments_attachmentDescription">
                 {{ 'DOCUMENT_CREATE.ATTACHMENTS.FORM.DESCRIPTION.LABEL' | translate }}
               </label>
             </p-float-label>

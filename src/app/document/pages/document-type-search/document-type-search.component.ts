@@ -6,11 +6,12 @@ import { Store } from '@ngrx/store'
 import { TranslateModule } from '@ngx-translate/core'
 import { map, Observable } from 'rxjs'
 
-import { PrimeIcons } from 'primeng/api'
 import { ButtonModule } from 'primeng/button'
 import { CheckboxModule } from 'primeng/checkbox'
 import { DialogModule } from 'primeng/dialog'
+import { FloatLabelModule } from 'primeng/floatlabel'
 import { InputTextModule } from 'primeng/inputtext'
+import { PrimeIcons } from 'primeng/api'
 import { Textarea } from 'primeng/inputtextarea'
 
 import {
@@ -43,7 +44,8 @@ import { documentTypeSearchColumns } from './document-type-search.columns'
     AngularAcceleratorModule,
     AsyncPipe,
     PortalPageComponent,
-    LetDirective
+    LetDirective,
+    FloatLabelModule
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-type-search.component.html'

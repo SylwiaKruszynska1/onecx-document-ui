@@ -5,7 +5,7 @@
         <div class="col-6">
           <p-float-label variant="on" controlErrorAnchor>
             <input
-              id="documentName"
+              id="dm_document_quick_upload_form_documentName"
               pInputText
               maxlength="60"
               type="text"
@@ -13,7 +13,7 @@
               (blur)="trimSpace($event)"
               (keypress)="preventSpace($event)"
             />
-            <label for="documentName" class="required">{{
+            <label for="dm_document_quick_upload_form_documentName" class="required">{{
               'DOCUMENT_QUICK_UPLOAD.BASIC_FIELDS.DOCUMENT_NAME' | translate
             }}</label>
           </p-float-label>
@@ -21,14 +21,14 @@
         <div class="col-6">
           <p-float-label variant="on" controlErrorAnchor>
             <p-select
-              id="typeId"
+              id="dm_document_quick_upload_form_typeId"
               [options]="documentTypes"
               appendTo="body"
               [autoDisplayFirst]="false"
               [showClear]="true"
               formControlName="typeId"
             ></p-select>
-            <label for="typeId" class="required">{{
+            <label for="dm_document_quick_upload_form_typeId" class="required">{{
               'DOCUMENT_QUICK_UPLOAD.BASIC_FIELDS.DOCUMENT_TYPE' | translate
             }}</label>
           </p-float-label>
@@ -36,7 +36,7 @@
         <div class="col-6 mt-2">
           <p-float-label variant="on" controlErrorAnchor>
             <input
-              id="channel"
+              id="dm_document_quick_upload_form_channel"
               pInputText
               maxlength="60"
               type="text"
@@ -45,7 +45,7 @@
               (keypress)="preventSpace($event)"
               (paste)="trimSpaceOnPaste($event, 'channelname', 60)"
             />
-            <label for="channel" class="required">{{
+            <label for="dm_document_quick_upload_form_channel" class="required">{{
               'DOCUMENT_QUICK_UPLOAD.BASIC_FIELDS.DOCUMENT_CHANNEL' | translate
             }}</label>
           </p-float-label>
@@ -53,14 +53,16 @@
         <div class="col-6 mt-2">
           <p-float-label variant="on" controlErrorAnchor>
             <p-select
-              id="status"
+              id="dm_document_quick_upload_form_status"
               [options]="documentStatus"
               appendTo="body"
               [autoDisplayFirst]="false"
               [showClear]="true"
               formControlName="lifeCycleState"
             ></p-select>
-            <label for="status">{{ 'DOCUMENT_QUICK_UPLOAD.BASIC_FIELDS.DOCUMENT_STATUS' | translate }}</label>
+            <label for="dm_document_quick_upload_form_status">{{
+              'DOCUMENT_QUICK_UPLOAD.BASIC_FIELDS.DOCUMENT_STATUS' | translate
+            }}</label>
           </p-float-label>
         </div>
       </div>
