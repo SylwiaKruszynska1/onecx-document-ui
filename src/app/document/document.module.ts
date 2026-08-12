@@ -1,15 +1,11 @@
-import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 import { LetDirective } from '@ngrx/component'
 import { EffectsModule } from '@ngrx/effects'
-import { DocumentDetailsComponent } from './pages/document-details/document-details.component'
-import { DocumentDetailsEffects } from './pages/document-details/document-details.effects'
-
 import { StoreModule } from '@ngrx/store'
 import { TranslateModule } from '@ngx-translate/core'
-import { AngularAcceleratorModule, providePortalDialogService } from '@onecx/angular-accelerator'
+
 import { ButtonModule } from 'primeng/button'
 import { DatePickerModule } from 'primeng/datepicker'
 import { SelectModule } from 'primeng/select'
@@ -22,9 +18,13 @@ import { TooltipModule } from 'primeng/tooltip'
 import { DialogModule } from 'primeng/dialog'
 import { CheckboxModule } from 'primeng/checkbox'
 import { Textarea } from 'primeng/inputtextarea'
-import { SharedModule } from '../shared/shared.module'
+
+import { AngularAcceleratorModule, providePortalDialogService } from '@onecx/angular-accelerator'
+
 import { documentFeature } from './document.reducers'
 import { routes } from './document.routes'
+import { DocumentDetailsComponent } from './pages/document-details/document-details.component'
+import { DocumentDetailsEffects } from './pages/document-details/document-details.effects'
 import { DocumentCreateOperationsEffects } from './operations/document-create-operations.effects'
 import { DocumentCreateComponent } from './pages/document-create/document-create.component'
 import { DocumentCreateEffects } from './pages/document-create/document-create.effects'
@@ -62,8 +62,6 @@ import { DocumentTypeSearchEffects } from './pages/document-type-search/document
     FileUploadComponent,
     RetryFileUploadDialogComponent,
     DocumentTypeSearchComponent,
-    CommonModule,
-    SharedModule,
     LetDirective,
     AngularAcceleratorModule,
     RouterModule.forChild(routes),

@@ -1,19 +1,19 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core'
-import { CommonModule } from '@angular/common'
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core'
 import { FormArray, ReactiveFormsModule } from '@angular/forms'
 import { TranslateModule } from '@ngx-translate/core'
+
 import { ButtonModule } from 'primeng/button'
+import { FloatLabelModule } from 'primeng/floatlabel'
 import { FluidModule } from 'primeng/fluid'
 import { InputTextModule } from 'primeng/inputtext'
 import { TableModule } from 'primeng/table'
 import { TooltipModule } from 'primeng/tooltip'
+
 import { DocumentCharacteristicsFormGroup } from 'src/app/document/types/document-create.types'
-import { FloatLabelModule } from 'primeng/floatlabel'
 
 @Component({
   selector: 'app-document-details-characteristics',
   imports: [
-    CommonModule,
     TranslateModule,
     FluidModule,
     ReactiveFormsModule,
@@ -23,6 +23,7 @@ import { FloatLabelModule } from 'primeng/floatlabel'
     TableModule,
     FloatLabelModule
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-details-characteristics.component.html'
 })
 export class DocumentDetailsCharacteristicsComponent {

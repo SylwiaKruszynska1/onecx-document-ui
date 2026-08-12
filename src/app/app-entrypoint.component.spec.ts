@@ -1,6 +1,7 @@
 import { TranslateService } from '@ngx-translate/core'
 import { PrimeNG } from 'primeng/config'
 import { of, Subject } from 'rxjs'
+
 import { AppEntrypointComponent } from './app-entrypoint.component'
 
 describe('AppEntrypointComponent', () => {

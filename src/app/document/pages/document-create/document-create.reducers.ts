@@ -1,8 +1,9 @@
 import { createReducer, on } from '@ngrx/store'
-import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
-import { DocumentCreateStep } from '../../types/document-create-step.enum'
+
 import { DocumentCreateActions } from './document-create.actions'
 import { DocumentCreateState } from './document-create.state'
+import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
+import { DocumentCreateStep } from '../../types/document-create-step.enum'
 
 export const initialState: DocumentCreateState = {
   activeStep: DocumentCreateStep.Details,

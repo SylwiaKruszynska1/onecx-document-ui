@@ -1,15 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { ReactiveFormsModule } from '@angular/forms'
+import { TranslateModule } from '@ngx-translate/core'
 import { SelectItem } from 'primeng/api'
+import { ButtonModule } from 'primeng/button'
+
+import { DocumentDetailsFormComponent } from 'src/app/document/components/document-details-form/document-details-form.component'
 import { createDocumentDetailsSectionForm } from '../../../../utils/document-details-form.factory'
 import { DocumentCreateDetailsFormGroup, DocumentCreateDetailsStepData } from '../../../../types/document-create.types'
-import { TranslateModule } from '@ngx-translate/core'
-import { ReactiveFormsModule } from '@angular/forms'
-import { DocumentDetailsFormComponent } from 'src/app/document/components/document-details-form/document-details-form.component'
-import { ButtonModule } from 'primeng/button'
 
 @Component({
   selector: 'app-document-create-details-form',
   imports: [TranslateModule, ReactiveFormsModule, DocumentDetailsFormComponent, ButtonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-create-details-form.component.html'
 })
 export class DocumentCreateDetailsFormComponent implements OnInit {

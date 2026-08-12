@@ -4,15 +4,20 @@ import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { concatLatestFrom } from '@ngrx/operators'
 import { Store } from '@ngrx/store'
 import { routerNavigatedAction } from '@ngrx/router-store'
+import { filter, map, mergeMap, tap } from 'rxjs'
+
 import { filterForNavigatedTo } from '@onecx/ngrx-accelerator'
 import { PortalMessageService } from '@onecx/angular-integration-interface'
+
 import {
   AttachmentCreateUpdate,
   DocumentCharacteristicCreateUpdate,
   DocumentCreateUpdate,
   LifeCycleState
 } from 'src/app/shared/generated'
-import { filter, map, mergeMap, tap } from 'rxjs'
+import { DocumentCreateComponent } from './document-create.component'
+import { DocumentCreateActions } from './document-create.actions'
+import { selectDocumentCreateSubmissionSource } from './document-create.selectors'
 import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 import {
   AttachmentDraft,
@@ -20,9 +25,6 @@ import {
   DocumentCharacteristicFormValue,
   DocumentCreateSubmissionSource
 } from '../../types/document-create.types'
-import { DocumentCreateComponent } from './document-create.component'
-import { DocumentCreateActions } from './document-create.actions'
-import { selectDocumentCreateSubmissionSource } from './document-create.selectors'
 
 @Injectable()
 export class DocumentCreateEffects {

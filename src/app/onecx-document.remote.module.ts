@@ -1,6 +1,5 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http'
-import { APP_INITIALIZER, DoBootstrap, Injector, isDevMode, NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser'
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
+import { DoBootstrap, inject, Injector, isDevMode, NgModule, provideAppInitializer } from '@angular/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { Router, RouterModule } from '@angular/router'
 import { Actions, EffectsModule, EffectSources, EffectsRunner } from '@ngrx/effects'
@@ -8,6 +7,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store'
 import { StoreModule } from '@ngrx/store'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
+
 import { AngularAuthModule } from '@onecx/angular-auth'
 import { createAppEntrypoint, initializeRouter } from '@onecx/angular-webcomponents'
 import { provideNavigatedEventStoreConnector } from '@onecx/ngrx-accelerator'
@@ -19,11 +19,11 @@ import {
   provideThemeConfig,
   provideTranslationPathFromMeta
 } from '@onecx/angular-utils'
+
 import { AppEntrypointComponent } from './app-entrypoint.component'
 import { routes } from './app-routing.module'
 import { metaReducers, reducers } from './app.reducers'
 import { Configuration } from './shared/generated'
-import { SharedModule } from './shared/shared.module'
 import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
 
 // Workaround for the following issue:
@@ -45,9 +45,6 @@ effectProvidersForWorkaround.forEach((p) => (p.ɵprov.providedIn = null))
         deps: [HttpClient, AppStateService]
       }
     }),
-    SharedModule,
-    BrowserModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     AngularAuthModule,
     StoreModule.forRoot(reducers, { metaReducers }),
@@ -68,16 +65,15 @@ effectProvidersForWorkaround.forEach((p) => (p.ɵprov.providedIn = null))
       useFactory: apiConfigProvider,
       deps: [ConfigurationService, AppStateService]
     },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeRouter,
-      multi: true,
-      deps: [Router, AppStateService]
-    },
+    provideAppInitializer(() => {
+      const initializerFn = initializeRouter(inject(Router), inject(AppStateService))
+      return initializerFn()
+    }),
     providePermissionService(),
     provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
     provideThemeConfig(),
-    provideNavigatedEventStoreConnector()
+    provideNavigatedEventStoreConnector(),
+    provideHttpClient(withInterceptorsFromDi())
   ]
 })
 export class OneCXDocumentModule implements DoBootstrap {

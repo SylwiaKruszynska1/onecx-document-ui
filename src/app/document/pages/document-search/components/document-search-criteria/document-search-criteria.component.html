@@ -4,15 +4,15 @@
       <p-float-label variant="on">
         <input
           pInputText
-          id="name"
+          id="dm_document_search_criteria_name"
           type="text"
           formControlName="name"
           [pTooltip]="'DOCUMENT_SEARCH.CRITERIA.NAME.TOOLTIP' | translate"
           tooltipPosition="top"
           tooltipEvent="hover"
-          [attr.aria-label]="'DOCUMENT_SEARCH.CRITERIA.NAME.ARIA-LABEL' | translate"
+          [ariaLabel]="'DOCUMENT_SEARCH.CRITERIA.NAME.ARIA-LABEL' | translate"
         />
-        <label for="name" style="white-space: nowrap">
+        <label for="dm_document_search_criteria_name" style="white-space: nowrap">
           {{ 'DOCUMENT_SEARCH.CRITERIA.NAME.LABEL' | translate }}
         </label>
       </p-float-label>
@@ -20,10 +20,9 @@
     <div [class]="'col-12 ' + (viewMode === 'basic' ? 'md:col-4' : 'md:col-3')">
       <p-float-label variant="on">
         <p-multiSelect
-          inputId="documentTypeId"
+          id="dm_document_search_criteria_documentTypeId"
           formControlName="documentTypeId"
           [options]="availableDocumentTypes"
-          styleClass="pl-7"
           [filter]="true"
           [pTooltip]="'DOCUMENT_SEARCH.CRITERIA.DOCUMENT_TYPE_ID.TOOLTIP' | translate"
           tooltipPosition="top"
@@ -31,7 +30,7 @@
           appendTo="body"
           [ariaLabel]="'DOCUMENT_SEARCH.CRITERIA.DOCUMENT_TYPE_ID.ARIA-LABEL' | translate"
         ></p-multiSelect>
-        <label for="documentTypeId" style="white-space: nowrap">
+        <label for="dm_document_search_criteria_documentTypeId" style="white-space: nowrap">
           {{ 'DOCUMENT_SEARCH.CRITERIA.DOCUMENT_TYPE_ID.LABEL' | translate }}
         </label>
       </p-float-label>
@@ -39,7 +38,7 @@
     <div [class]="'col-12 ' + (viewMode === 'basic' ? 'md:col-4' : 'md:col-3')">
       <p-float-label variant="on">
         <p-select
-          inputId="channelName"
+          id="dm_document_search_criteria_channelName"
           formControlName="channelName"
           [options]="availableChannels"
           data
@@ -50,7 +49,7 @@
           appendTo="body"
           [ariaLabel]="'DOCUMENT_SEARCH.CRITERIA.CHANNEL_NAME.ARIA-LABEL' | translate"
         ></p-select>
-        <label for="channelName" style="white-space: nowrap">
+        <label for="dm_document_search_criteria_channelName" style="white-space: nowrap">
           {{ 'DOCUMENT_SEARCH.CRITERIA.CHANNEL_NAME.LABEL' | translate }}
         </label>
       </p-float-label>
@@ -61,7 +60,7 @@
         <p-float-label variant="on">
           <input
             pInputText
-            id="id"
+            id="dm_document_search_criteria_id"
             type="text"
             formControlName="id"
             [pTooltip]="'DOCUMENT_SEARCH.CRITERIA.ID.TOOLTIP' | translate"
@@ -69,7 +68,7 @@
             tooltipEvent="hover"
             [ariaLabel]="'DOCUMENT_SEARCH.CRITERIA.ID.ARIA-LABEL' | translate"
           />
-          <label for="id" style="white-space: nowrap">
+          <label for="dm_document_search_criteria_id" style="white-space: nowrap">
             {{ 'DOCUMENT_SEARCH.CRITERIA.ID.LABEL' | translate }}
           </label>
         </p-float-label>
@@ -77,7 +76,7 @@
       <div class="col-12 md:col-3">
         <p-float-label variant="on">
           <p-multiSelect
-            inputId="lifeCycleState"
+            id="dm_document_search_criteria_lifeCycleState"
             formControlName="lifeCycleState"
             [options]="lifeCycleStates"
             [filter]="true"
@@ -87,7 +86,7 @@
             appendTo="body"
             [ariaLabel]="'DOCUMENT_SEARCH.CRITERIA.LIFE_CYCLE_STATE.ARIA-LABEL' | translate"
           ></p-multiSelect>
-          <label for="lifeCycleState" style="white-space: nowrap">
+          <label for="dm_document_search_criteria_lifeCycleState" style="white-space: nowrap">
             {{ 'DOCUMENT_SEARCH.CRITERIA.LIFE_CYCLE_STATE.LABEL' | translate }}
           </label>
         </p-float-label>
@@ -95,7 +94,7 @@
       <div class="col-12 md:col-3">
         <p-float-label variant="on">
           <p-datepicker
-            inputId="startDate"
+            id="dm_document_search_criteria_startDate"
             formControlName="startDate"
             [showIcon]="true"
             [showClear]="true"
@@ -105,7 +104,7 @@
             tooltipEvent="hover"
             [ariaLabel]="'DOCUMENT_SEARCH.CRITERIA.START_DATE.ARIA-LABEL' | translate"
           ></p-datepicker>
-          <label for="startDate" style="white-space: nowrap">
+          <label for="dm_document_search_criteria_startDate" style="white-space: nowrap">
             {{ 'DOCUMENT_SEARCH.CRITERIA.START_DATE.LABEL' | translate }}
           </label>
         </p-float-label>
@@ -113,7 +112,7 @@
       <div class="col-12 md:col-3">
         <p-float-label variant="on">
           <p-datepicker
-            inputId="endDate"
+            id="dm_document_search_criteria_endDate"
             formControlName="endDate"
             [showIcon]="true"
             [showClear]="true"
@@ -123,7 +122,7 @@
             tooltipEvent="hover"
             [ariaLabel]="'DOCUMENT_SEARCH.CRITERIA.END_DATE.ARIA-LABEL' | translate"
           ></p-datepicker>
-          <label for="endDate" style="white-space: nowrap">
+          <label for="dm_document_search_criteria_endDate" style="white-space: nowrap">
             {{ 'DOCUMENT_SEARCH.CRITERIA.END_DATE.LABEL' | translate }}
           </label>
         </p-float-label>
@@ -132,7 +131,7 @@
         <p-float-label variant="on">
           <input
             pInputText
-            id="createBy"
+            id="dm_document_search_criteria_createBy"
             type="text"
             formControlName="createBy"
             [pTooltip]="'DOCUMENT_SEARCH.CRITERIA.CREATE_BY.TOOLTIP' | translate"
@@ -140,7 +139,7 @@
             tooltipEvent="hover"
             [ariaLabel]="'DOCUMENT_SEARCH.CRITERIA.CREATE_BY.ARIA-LABEL' | translate"
           />
-          <label for="createBy" style="white-space: nowrap">
+          <label for="dm_document_search_criteria_createBy" style="white-space: nowrap">
             {{ 'DOCUMENT_SEARCH.CRITERIA.CREATE_BY.LABEL' | translate }}
           </label>
         </p-float-label>
@@ -149,7 +148,7 @@
         <p-float-label variant="on">
           <input
             pInputText
-            id="objectReferenceId"
+            id="dm_document_search_criteria_objectReferenceId"
             type="text"
             formControlName="objectReferenceId"
             [pTooltip]="'DOCUMENT_SEARCH.CRITERIA.OBJECT_REFERENCE_ID.TOOLTIP' | translate"
@@ -157,7 +156,7 @@
             tooltipEvent="hover"
             [ariaLabel]="'DOCUMENT_SEARCH.CRITERIA.OBJECT_REFERENCE_ID.ARIA-LABEL' | translate"
           />
-          <label for="objectReferenceId" style="white-space: nowrap">
+          <label for="dm_document_search_criteria_objectReferenceId" style="white-space: nowrap">
             {{ 'DOCUMENT_SEARCH.CRITERIA.OBJECT_REFERENCE_ID.LABEL' | translate }}
           </label>
         </p-float-label>
@@ -166,7 +165,7 @@
         <p-float-label variant="on">
           <input
             pInputText
-            id="objectReferenceType"
+            id="dm_document_search_criteria_objectReferenceType"
             type="text"
             formControlName="objectReferenceType"
             [pTooltip]="'DOCUMENT_SEARCH.CRITERIA.OBJECT_REFERENCE_TYPE.TOOLTIP' | translate"
@@ -174,7 +173,7 @@
             tooltipEvent="hover"
             [ariaLabel]="'DOCUMENT_SEARCH.CRITERIA.OBJECT_REFERENCE_TYPE.ARIA-LABEL' | translate"
           />
-          <label for="objectReferenceType" style="white-space: nowrap">
+          <label for="dm_document_search_criteria_objectReferenceType" style="white-space: nowrap">
             {{ 'DOCUMENT_SEARCH.CRITERIA.OBJECT_REFERENCE_TYPE.LABEL' | translate }}
           </label>
         </p-float-label>

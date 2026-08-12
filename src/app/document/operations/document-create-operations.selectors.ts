@@ -1,6 +1,8 @@
 import { createSelector } from '@ngrx/store'
-import { createChildSelectors } from '@onecx/ngrx-accelerator'
 import { SelectItem } from 'primeng/api'
+
+import { createChildSelectors } from '@onecx/ngrx-accelerator'
+
 import { documentFeature } from '../document.reducers'
 import { initialState } from './document-create-operations.reducers'
 

@@ -1,23 +1,25 @@
 import { TestBed } from '@angular/core/testing'
 import { provideRouter } from '@angular/router'
+import { Router } from '@angular/router'
 import { provideMockActions } from '@ngrx/effects/testing'
 import { routerNavigatedAction } from '@ngrx/router-store'
 import { Action, Store } from '@ngrx/store'
 import { MockStore, provideMockStore } from '@ngrx/store/testing'
-import { Router } from '@angular/router'
-import { PortalMessageService } from '@onecx/angular-integration-interface'
-import { DialogState, PortalDialogService } from '@onecx/angular-accelerator'
 import { firstValueFrom, of, ReplaySubject, throwError } from 'rxjs'
 import { take } from 'rxjs/operators'
+
+import { PortalMessageService } from '@onecx/angular-integration-interface'
+import { DialogState, PortalDialogService } from '@onecx/angular-accelerator'
+
 import { DocumentControllerAPIService } from 'src/app/shared/generated'
+import { selectBackNavigationPossible } from 'src/app/shared/selectors/onecx.selectors'
+import { selectUrl } from 'src/app/shared/selectors/router.selectors'
 import { ExternalFileHandlerService } from '../../service/external-file-handler.service'
 import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 import { DocumentDetailsActions } from './document-details.actions'
 import { DocumentDetailsEffects } from './document-details.effects'
 import { initialState } from './document-details.reducers'
 import { documentDetailsSelectors, selectDocumentDetailsViewModel } from './document-details.selectors'
-import { selectBackNavigationPossible } from 'src/app/shared/selectors/onecx.selectors'
-import { selectUrl } from 'src/app/shared/selectors/router.selectors'
 
 jest.mock('@onecx/ngrx-accelerator', () => {
   const actual = jest.requireActual('@onecx/ngrx-accelerator')

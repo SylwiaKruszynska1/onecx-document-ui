@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store'
+
 import { DocumentTypeSearchActions } from './document-type-search.actions'
 import { documentTypeSearchColumns } from './document-type-search.columns'
 import { DocumentTypeSearchState } from './document-type-search.state'

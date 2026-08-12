@@ -9,11 +9,11 @@ import { take } from 'rxjs/operators'
 
 import { PortalMessageService } from '@onecx/angular-integration-interface'
 
-import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 import { DocumentCreateActions } from './document-create.actions'
 import { DocumentCreateEffects } from './document-create.effects'
 import { initialState } from './document-create.reducers'
 import { selectDocumentCreateSubmissionSource } from './document-create.selectors'
+import { DocumentCreateOperationsActions } from '../../operations/document-create-operations.actions'
 
 jest.mock('@onecx/ngrx-accelerator', () => {
   const actual = jest.requireActual('@onecx/ngrx-accelerator')

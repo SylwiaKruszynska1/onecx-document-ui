@@ -1,4 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store'
+
 import { AttachmentPresignedUrlResponse, DocumentDetail } from 'src/app/shared/generated'
 import { DocumentDetailsFormRawValue } from '../../types/document-create.types'
 

@@ -3,9 +3,11 @@ import { Router } from '@angular/router'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { routerNavigatedAction } from '@ngrx/router-store'
 import { Action } from '@ngrx/store'
+import { catchError, map, of, switchMap, tap } from 'rxjs'
+
 import { filterForNavigatedTo } from '@onecx/ngrx-accelerator'
 import { AppStateService, PortalMessageService } from '@onecx/angular-integration-interface'
-import { catchError, map, of, switchMap, tap } from 'rxjs'
+
 import { DocumentTypeControllerAPIService } from 'src/app/shared/generated'
 import { DocumentTypeSearchActions } from './document-type-search.actions'
 import { DocumentTypeSearchComponent } from './document-type-search.component'

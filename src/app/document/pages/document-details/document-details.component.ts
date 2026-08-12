@@ -1,13 +1,16 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
-import { Store } from '@ngrx/store'
-import { Action, AngularAcceleratorModule, BreadcrumbService } from '@onecx/angular-accelerator'
-import { map, Observable, Subscription } from 'rxjs'
-
+import { AsyncPipe } from '@angular/common'
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core'
 import { FormArray, ReactiveFormsModule } from '@angular/forms'
+import { LetDirective } from '@ngrx/component'
+import { Store } from '@ngrx/store'
+import { TranslateModule } from '@ngx-translate/core'
+import { map, Observable, Subscription } from 'rxjs'
 import { PrimeIcons, SelectItem } from 'primeng/api'
-import { DocumentDetailsActions } from './document-details.actions'
-import { selectDocumentDetailsViewModel, selectDocumentTypes } from './document-details.selectors'
-import { DocumentDetailsViewModel } from './document-details.viewmodel'
+import { TabsModule } from 'primeng/tabs'
+
+import { Action, AngularAcceleratorModule, BreadcrumbService } from '@onecx/angular-accelerator'
+import { PortalPageComponent } from '@onecx/angular-utils'
+
 import {
   addCharacteristic,
   createDocumentDetailsForm,
@@ -22,19 +25,16 @@ import {
   DocumentCharacteristicsFormGroup,
   DocumentDetailsFormGroup
 } from '../../types/document-create.types'
-import { TabsModule } from 'primeng/tabs'
-import { AsyncPipe, CommonModule } from '@angular/common'
-import { PortalPageComponent } from '@onecx/angular-utils'
-import { TranslateModule } from '@ngx-translate/core'
-import { LetDirective } from '@ngrx/component'
+import { DocumentDetailsFormComponent } from '../../components/document-details-form/document-details-form.component'
+import { DocumentDetailsActions } from './document-details.actions'
+import { selectDocumentDetailsViewModel, selectDocumentTypes } from './document-details.selectors'
+import { DocumentDetailsViewModel } from './document-details.viewmodel'
 import { DocumentDetailsCharacteristicsComponent } from './components/document-details-characteristics/document-details-characteristics.component'
 import { DocumentDetailsAttachmentListComponent } from './components/document-details-attachment-list/document-details-attachment-list.component'
-import { DocumentDetailsFormComponent } from '../../components/document-details-form/document-details-form.component'
 
 @Component({
   selector: 'app-document-details',
   imports: [
-    CommonModule,
     TabsModule,
     AsyncPipe,
     PortalPageComponent,
@@ -46,6 +46,7 @@ import { DocumentDetailsFormComponent } from '../../components/document-details-
     DocumentDetailsAttachmentListComponent,
     DocumentDetailsFormComponent
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './document-details.component.html'
 })
 export class DocumentDetailsComponent implements OnInit, OnDestroy {
