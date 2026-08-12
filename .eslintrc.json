@@ -3,13 +3,6 @@
   "plugins": ["@nx", "deprecation"],
   "overrides": [
     {
-      "files": ["**/*.harness.ts"],
-      "parserOptions": {
-        "project": []
-      },
-      "rules": {}
-    },
-    {
       "files": ["*.ts"],
       "extends": ["plugin:deprecation/recommended"],
       "parserOptions": {
@@ -59,6 +52,13 @@
     {
       "files": ["*.html"],
       "extends": ["plugin:@nx/angular-template"],
+      "rules": {}
+    },
+    {
+      "files": ["**/*.harness.ts"],
+      "parserOptions": {
+        "project": []
+      },
       "rules": {}
     }
   ]
