@@ -3,7 +3,7 @@
   "compilerOptions": {
     "types": ["jest", "node"]
   },
-  "files": ["src/test-setup.ts"],
+  "files": ["setup-jest.ts"],
   "include": ["src/**/*.spec.ts", "src/**/*.harness.ts", "src/**/*.d.ts"],
   "exclude": ["src/app/shared/generated/**/*"]
 }
