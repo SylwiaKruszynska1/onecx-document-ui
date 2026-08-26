@@ -13,7 +13,6 @@ import { InputTextModule } from 'primeng/inputtext'
 import { MultiSelectModule } from 'primeng/multiselect'
 import { StepsModule } from 'primeng/steps'
 import { TableModule } from 'primeng/table'
-import { TabViewModule } from 'primeng/tabview'
 import { TooltipModule } from 'primeng/tooltip'
 import { DialogModule } from 'primeng/dialog'
 import { CheckboxModule } from 'primeng/checkbox'
@@ -43,6 +42,7 @@ import { DocumentDetailsCharacteristicsComponent } from './pages/document-detail
 import { RetryFileUploadDialogComponent } from './pages/document-details/dialog/retry-file-upload-dialog/retry-file-upload-dialog.component'
 import { DocumentTypeSearchComponent } from './pages/document-type-search/document-type-search.component'
 import { DocumentTypeSearchEffects } from './pages/document-type-search/document-type-search.effects'
+import { TabsModule } from 'primeng/tabs'
 
 @NgModule({
   providers: [providePortalDialogService()],
@@ -74,7 +74,7 @@ import { DocumentTypeSearchEffects } from './pages/document-type-search/document
     MultiSelectModule,
     StepsModule,
     TableModule,
-    TabViewModule,
+    TabsModule,
     TooltipModule,
     Textarea,
     DialogModule,
