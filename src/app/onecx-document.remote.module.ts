@@ -1,7 +1,7 @@
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { DoBootstrap, inject, Injector, isDevMode, NgModule, provideAppInitializer } from '@angular/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { Router, RouterModule } from '@angular/router'
+import { Router, RouterModule, Routes } from '@angular/router'
 import { Actions, EffectsModule, EffectSources, EffectsRunner } from '@ngrx/effects'
 import { StoreRouterConnectingModule } from '@ngrx/router-store'
 import { StoreModule } from '@ngrx/store'
@@ -9,7 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 
 import { AngularAuthModule } from '@onecx/angular-auth'
-import { createAppEntrypoint, initializeRouter } from '@onecx/angular-webcomponents'
+import { createAppEntrypoint, initializeRouter, startsWith } from '@onecx/angular-webcomponents'
 import { AppStateService, ConfigurationService } from '@onecx/angular-integration-interface'
 import { AngularAcceleratorModule } from '@onecx/angular-accelerator'
 import {
@@ -20,7 +20,6 @@ import {
 } from '@onecx/angular-utils'
 
 import { AppEntrypointComponent } from './app-entrypoint.component'
-import { routes } from './app-routing.module'
 import { metaReducers, reducers } from './app.reducers'
 import { Configuration } from './shared/generated'
 import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
@@ -29,6 +28,17 @@ import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
 // https://github.com/ngrx/platform/issues/3700
 const effectProvidersForWorkaround = [EffectsRunner, EffectSources, Actions]
 effectProvidersForWorkaround.forEach((p) => (p.ɵprov.providedIn = null))
+
+export const routes: Routes = [
+  {
+    matcher: startsWith(''),
+    loadChildren: () => import('./document/document.module').then((mod) => mod.DocumentModule)
+  },
+  {
+    matcher: startsWith('document-types'),
+    loadChildren: () => import('./document/document.module').then((mod) => mod.DocumentModule)
+  }
+]
 
 @NgModule({
   imports: [

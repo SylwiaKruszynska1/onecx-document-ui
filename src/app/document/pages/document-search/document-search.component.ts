@@ -1,5 +1,15 @@
 import { AsyncPipe } from '@angular/common'
-import { ChangeDetectionStrategy, Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  Inject,
+  LOCALE_ID,
+  OnInit,
+  ViewChild,
+  inject
+} from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { LetDirective } from '@ngrx/component'
@@ -46,6 +56,8 @@ import { DocumentSearchViewModel } from './document-search.viewmodel'
   styleUrls: ['./document-search.component.scss']
 })
 export class DocumentSearchComponent implements OnInit {
+  private readonly destroyRef = inject(DestroyRef)
+
   @ViewChild(DocumentSearchCriteriaComponent)
   criteriaComponent!: DocumentSearchCriteriaComponent
 
@@ -78,14 +90,6 @@ export class DocumentSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.hasPermission('DOCUMENT#EDIT').then((hasPermission) => {
-      this.hasEditPermission = hasPermission
-      this.prepareAdditionalActions()
-    })
-    this.userService.hasPermission('DOCUMENT#VIEW').then((hasPermission) => {
-      this.hasViewPermission = hasPermission
-      this.prepareAdditionalActions()
-    })
     this.breadcrumbService.setItems([
       {
         titleKey: 'DOCUMENT_SEARCH.BREADCRUMB',
@@ -93,9 +97,20 @@ export class DocumentSearchComponent implements OnInit {
         routerLink: '/document'
       }
     ])
-    this.viewModel$.subscribe((vm) => {
+    this.viewModel$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((vm) => {
       this.documentSearchFormGroup.patchValue(vm.searchCriteria)
     })
+    void this.loadPermissions()
+  }
+
+  private async loadPermissions(): Promise<void> {
+    const [hasEditPermission, hasViewPermission] = await Promise.all([
+      this.userService.hasPermission('DOCUMENT#EDIT'),
+      this.userService.hasPermission('DOCUMENT#VIEW')
+    ])
+
+    this.hasEditPermission = hasEditPermission
+    this.hasViewPermission = hasViewPermission
     this.prepareAdditionalActions()
   }
 

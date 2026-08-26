@@ -17,7 +17,6 @@ import { FluidModule } from 'primeng/fluid'
     TooltipModule,
     TranslateModule,
     ReactiveFormsModule,
-    DatePicker,
     MultiSelectModule,
     InputTextModule,
     SelectModule,
