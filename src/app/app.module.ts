@@ -1,6 +1,7 @@
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { isDevMode, NgModule } from '@angular/core'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { RouterModule, Routes } from '@angular/router'
 import { LetDirective } from '@ngrx/component'
 import { EffectsModule } from '@ngrx/effects'
 import { StoreRouterConnectingModule } from '@ngrx/router-store'
@@ -12,21 +13,32 @@ import { AngularAuthModule } from '@onecx/angular-auth'
 import { AppStateService, APP_CONFIG, ConfigurationService } from '@onecx/angular-integration-interface'
 import { AngularAcceleratorModule, providePortalDialogService } from '@onecx/angular-accelerator'
 import { createTranslateLoader, provideTranslationPathFromMeta } from '@onecx/angular-utils'
+import { startsWith } from '@onecx/angular-webcomponents'
 
 import { environment } from 'src/environments/environment'
-import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { metaReducers, reducers } from './app.reducers'
 import { Configuration } from './shared/generated'
 import { apiConfigProvider } from './shared/utils/apiConfigProvider.utils'
+
+export const routes: Routes = [
+  {
+    matcher: startsWith(''),
+    loadChildren: () => import('./document/document.module').then((mod) => mod.DocumentModule)
+  },
+  {
+    matcher: startsWith('document-types'),
+    loadChildren: () => import('./document/document.module').then((mod) => mod.DocumentModule)
+  }
+]
 
 @NgModule({
   imports: [
     AppComponent,
     AngularAuthModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     LetDirective,
+    RouterModule.forRoot(routes),
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({
