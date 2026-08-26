@@ -51,7 +51,7 @@ describe('app.reducers', () => {
     expect(result).toBe(wrappedReducer)
   })
 
-  it('should return document key prefix when storageKeySerializer is called', () => {
+  it('should return the document key prefix with the current key appended when storageKeySerializer is called', () => {
     const baseReducer = jest.fn()
     localStorageSyncReducer(baseReducer as any)
 
@@ -59,7 +59,7 @@ describe('app.reducers', () => {
       storageKeySerializer: (key: string) => string
     }
 
-    expect(config.storageKeySerializer('ignored')).toBe('document.${key}')
+    expect(config.storageKeySerializer('search')).toBe('document.search')
   })
 
   it('should include localStorageSyncReducer when metaReducers are defined', () => {

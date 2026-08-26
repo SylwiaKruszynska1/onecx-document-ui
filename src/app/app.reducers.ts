@@ -27,7 +27,7 @@ export function localStorageSyncReducer(
     ],
     mergeReducer: lazyLoadingMergeReducer,
     rehydrate: true,
-    storageKeySerializer: (key) => 'document.${key}' // eslint-disable-line @typescript-eslint/no-unused-vars
+    storageKeySerializer: (key) => `document.${key}`
   })(reducer)
 }
 
