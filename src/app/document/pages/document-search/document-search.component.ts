@@ -90,14 +90,6 @@ export class DocumentSearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.hasPermission('DOCUMENT#EDIT').then((hasPermission) => {
-      this.hasEditPermission = hasPermission
-      this.prepareAdditionalActions()
-    })
-    this.userService.hasPermission('DOCUMENT#VIEW').then((hasPermission) => {
-      this.hasViewPermission = hasPermission
-      this.prepareAdditionalActions()
-    })
     this.breadcrumbService.setItems([
       {
         titleKey: 'DOCUMENT_SEARCH.BREADCRUMB',
@@ -108,6 +100,17 @@ export class DocumentSearchComponent implements OnInit {
     this.viewModel$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((vm) => {
       this.documentSearchFormGroup.patchValue(vm.searchCriteria)
     })
+    void this.loadPermissions()
+  }
+
+  private async loadPermissions(): Promise<void> {
+    const [hasEditPermission, hasViewPermission] = await Promise.all([
+      this.userService.hasPermission('DOCUMENT#EDIT'),
+      this.userService.hasPermission('DOCUMENT#VIEW')
+    ])
+
+    this.hasEditPermission = hasEditPermission
+    this.hasViewPermission = hasViewPermission
     this.prepareAdditionalActions()
   }
 

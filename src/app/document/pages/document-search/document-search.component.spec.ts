@@ -167,6 +167,17 @@ describe('DocumentSearchComponent', () => {
     expect(component).toBeTruthy()
   })
 
+  it('should prepare additional actions once after both permission checks resolve', async () => {
+    const prepareSpy = jest.spyOn(component, 'prepareAdditionalActions')
+
+    prepareSpy.mockClear()
+    component.ngOnInit()
+    await Promise.resolve()
+    await Promise.resolve()
+
+    expect(prepareSpy).toHaveBeenCalledTimes(1)
+  })
+
   it('should not patch form values after the component is destroyed', () => {
     const patchSpy = jest.spyOn(component.documentSearchFormGroup, 'patchValue')
 
