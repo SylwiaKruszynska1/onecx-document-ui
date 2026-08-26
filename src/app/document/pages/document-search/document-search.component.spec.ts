@@ -167,6 +167,19 @@ describe('DocumentSearchComponent', () => {
     expect(component).toBeTruthy()
   })
 
+  it('should not patch form values after the component is destroyed', () => {
+    const patchSpy = jest.spyOn(component.documentSearchFormGroup, 'patchValue')
+
+    fixture.destroy()
+    store.overrideSelector(selectDocumentSearchViewModel, {
+      ...baseDocumentSearchViewModel,
+      searchCriteria: { name: 'after-destroy' }
+    })
+    store.refreshState()
+
+    expect(patchSpy).not.toHaveBeenCalled()
+  })
+
   it('should dispatch resetButtonClicked action on resetSearch', async () => {
     const doneFn = jest.fn()
     store.overrideSelector(selectDocumentSearchViewModel, {

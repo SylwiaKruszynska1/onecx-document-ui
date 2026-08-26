@@ -1,5 +1,15 @@
 import { AsyncPipe } from '@angular/common'
-import { ChangeDetectionStrategy, Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  Inject,
+  LOCALE_ID,
+  OnInit,
+  ViewChild,
+  inject
+} from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router'
 import { LetDirective } from '@ngrx/component'
@@ -46,6 +56,8 @@ import { DocumentSearchViewModel } from './document-search.viewmodel'
   styleUrls: ['./document-search.component.scss']
 })
 export class DocumentSearchComponent implements OnInit {
+  private readonly destroyRef = inject(DestroyRef)
+
   @ViewChild(DocumentSearchCriteriaComponent)
   criteriaComponent!: DocumentSearchCriteriaComponent
 
@@ -93,7 +105,7 @@ export class DocumentSearchComponent implements OnInit {
         routerLink: '/document'
       }
     ])
-    this.viewModel$.subscribe((vm) => {
+    this.viewModel$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((vm) => {
       this.documentSearchFormGroup.patchValue(vm.searchCriteria)
     })
     this.prepareAdditionalActions()
