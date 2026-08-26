@@ -17,6 +17,7 @@ import { TooltipModule } from 'primeng/tooltip'
 import { DialogModule } from 'primeng/dialog'
 import { CheckboxModule } from 'primeng/checkbox'
 import { Textarea } from 'primeng/inputtextarea'
+import { TabsModule } from 'primeng/tabs'
 
 import { AngularAcceleratorModule, providePortalDialogService } from '@onecx/angular-accelerator'
 
@@ -42,7 +43,6 @@ import { DocumentDetailsCharacteristicsComponent } from './pages/document-detail
 import { RetryFileUploadDialogComponent } from './pages/document-details/dialog/retry-file-upload-dialog/retry-file-upload-dialog.component'
 import { DocumentTypeSearchComponent } from './pages/document-type-search/document-type-search.component'
 import { DocumentTypeSearchEffects } from './pages/document-type-search/document-type-search.effects'
-import { TabsModule } from 'primeng/tabs'
 
 @NgModule({
   providers: [providePortalDialogService()],
