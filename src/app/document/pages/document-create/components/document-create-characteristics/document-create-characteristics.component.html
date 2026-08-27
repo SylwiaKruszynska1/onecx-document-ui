@@ -27,7 +27,7 @@
           <ng-template pTemplate="body" let-rowGroup let-rowIndex="rowIndex">
             <tr [formGroup]="rowGroup">
               <td>
-                <p-float-label variant="on" controlErrorAnchor>
+                <p-floatlabel variant="on" controlErrorAnchor>
                   <input
                     pInputText
                     id="dm_document_create_characteristics_name-{{ rowIndex }}"
@@ -39,11 +39,11 @@
                   <label for="dm_document_create_characteristics_name-{{ rowIndex }}">{{
                     'DOCUMENT_CREATE.CHARACTERISTICS.COLUMNS.NAME' | translate
                   }}</label>
-                </p-float-label>
+                </p-floatlabel>
               </td>
 
               <td>
-                <p-float-label variant="on" controlErrorAnchor>
+                <p-floatlabel variant="on" controlErrorAnchor>
                   <input
                     pInputText
                     id="dm_document_create_characteristics_characteristicValue_{{ rowIndex }}"
@@ -55,7 +55,7 @@
                   <label for="dm_document_create_characteristics_characteristicValue_{{ rowIndex }}">{{
                     'DOCUMENT_CREATE.CHARACTERISTICS.COLUMNS.VALUE' | translate
                   }}</label>
-                </p-float-label>
+                </p-floatlabel>
               </td>
 
               <td>
