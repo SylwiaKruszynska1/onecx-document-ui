@@ -86,7 +86,7 @@ export const routes: Routes = [
     provideNavigatedEventStoreConnector()
   ]
 })
-export class OnecxDocumentUiModule implements DoBootstrap {
+export class OneCXDocumentModule implements DoBootstrap {
   constructor(private readonly injector: Injector) {}
 
   ngDoBootstrap(): void {
