@@ -12,9 +12,26 @@
     [manualBreadcrumbs]="true"
     [actions]="(headerActions$ | async) ?? []"
     (componentStateChanged)="searchHeaderComponentStateChanged($event)"
+    (searched)="search(searchForm)"
+    (resetted)="resetSearch()"
     [viewMode]="vm.searchHeaderComponentState?.activeViewMode ?? 'basic'"
     [ariaLabel]="'DOCUMENT_TYPE_SEARCH.ARIA-LABEL' | translate"
   >
+    <form [formGroup]="searchForm" class="w-full">
+      <p-floatlabel variant="on">
+        <input
+          id="dm_document_type_search_name"
+          type="text"
+          pInputText
+          class="w-full"
+          formControlName="name"
+          [ariaLabel]="'DOCUMENT_TYPE_SEARCH.SEARCH_NAME' | translate"
+        />
+        <label for="dm_document_type_search_name">
+          {{ 'DOCUMENT_TYPE_SEARCH.SEARCH_NAME' | translate }}
+        </label>
+      </p-floatlabel>
+    </form>
   </ocx-search-header>
   <ocx-content-container layout="horizontal">
     <ocx-content class="w-full">

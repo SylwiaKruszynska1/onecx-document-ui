@@ -9,6 +9,7 @@ import { DocumentType } from 'src/app/shared/generated'
 export interface DocumentTypeSearchState {
   columns: DataTableColumn[]
   results: DocumentType[]
+  searchCriteria: { name?: string }
   loadingIndicator: boolean
   resultComponentState: InteractiveDataViewComponentState | null
   searchHeaderComponentState: SearchHeaderComponentState | null

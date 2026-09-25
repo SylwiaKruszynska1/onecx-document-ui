@@ -55,6 +55,7 @@ export class DocumentTypeSearchComponent implements OnInit {
   defaultDataSortDirection: DataSortDirection
   headerActions$: Observable<Action[]>
   documentTypeFormGroup: FormGroup
+  searchForm: FormGroup
   public displayedColumnKeys: string[] = []
 
   constructor(
@@ -65,7 +66,8 @@ export class DocumentTypeSearchComponent implements OnInit {
     this.viewModel$ = this.store.select(selectDocumentTypeSearchViewModel)
     this.defaultDataSortDirection = DataSortDirection.NONE
     this.headerActions$ = this.buildHeaderActions()
-    this.documentTypeFormGroup = this.buildFormGroup()
+    this.documentTypeFormGroup = this.buildForm(false)
+    this.searchForm = this.buildForm(true)
     this.displayedColumnKeys = documentTypeSearchColumns.map((column) => column.id)
   }
 
@@ -85,6 +87,16 @@ export class DocumentTypeSearchComponent implements OnInit {
 
   searchHeaderComponentStateChanged(state: SearchHeaderComponentState) {
     this.store.dispatch(DocumentTypeSearchActions.searchHeaderComponentStateChanged(state))
+  }
+
+  search(formGroup: FormGroup) {
+    const searchCriteria = formGroup.getRawValue()
+    this.store.dispatch(DocumentTypeSearchActions.searchButtonClicked({ searchCriteria }))
+  }
+
+  resetSearch() {
+    this.searchForm.reset()
+    this.store.dispatch(DocumentTypeSearchActions.resetButtonClicked())
   }
 
   editItem({ id }: RowListGridData) {
@@ -201,11 +213,15 @@ export class DocumentTypeSearchComponent implements OnInit {
     this.store.dispatch(DocumentTypeSearchActions.navigateBackButtonClicked())
   }
 
-  private buildFormGroup(): FormGroup {
+  private buildForm(isSearchForm = false): FormGroup {
     return this.formBuilder.group({
-      name: [null, [Validators.required]],
-      description: [null],
-      activeStatus: [false]
+      name: [null, isSearchForm ? [] : [Validators.required]],
+      ...(isSearchForm
+        ? {}
+        : {
+            description: [null],
+            activeStatus: [false]
+          })
     })
   }
 }
