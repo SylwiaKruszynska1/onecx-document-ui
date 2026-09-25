@@ -24,7 +24,7 @@ describe('DocumentTypeSearch selectors', () => {
         }
       ] as any
 
-      const result = selectResults.projector(input)
+      const result = selectResults.projector(input, {})
 
       expect(result).toEqual([
         {
@@ -45,14 +45,33 @@ describe('DocumentTypeSearch selectors', () => {
     })
 
     it('should return empty array when results is empty', () => {
-      const result = selectResults.projector([])
+      const result = selectResults.projector([], {})
       expect(result).toEqual([])
     })
 
     it('should use item.id as the id in RowListGridData', () => {
       const input = [{ id: 'abc', name: 'Test' }] as any
-      const result = selectResults.projector(input)
+      const result = selectResults.projector(input, {})
       expect(result[0].id).toBe('abc')
+    })
+
+    it('should filter results by name when search criteria contains a name', () => {
+      const input = [
+        { id: '1', name: 'Invoice', description: 'Desc', activeStatus: true },
+        { id: '2', name: 'Contract', description: 'Other', activeStatus: false }
+      ] as any
+
+      const result = selectResults.projector(input, { name: 'voi' })
+
+      expect(result).toEqual([
+        {
+          imagePath: '',
+          id: '1',
+          name: 'Invoice',
+          description: 'Desc',
+          activeStatus: true
+        }
+      ])
     })
   })
 
