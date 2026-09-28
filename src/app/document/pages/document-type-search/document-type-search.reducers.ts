@@ -7,6 +7,7 @@ import { DocumentTypeSearchState } from './document-type-search.state'
 export const initialState: DocumentTypeSearchState = {
   columns: documentTypeSearchColumns,
   results: [],
+  searchCriteria: {},
   loadingIndicator: false,
   resultComponentState: null,
   searchHeaderComponentState: null,
@@ -24,6 +25,14 @@ export const documentTypeSearchReducer = createReducer(
     ...state,
     results: documentTypes,
     loadingIndicator: false
+  })),
+  on(DocumentTypeSearchActions.searchButtonClicked, (state, { searchCriteria }): DocumentTypeSearchState => ({
+    ...state,
+    searchCriteria
+  })),
+  on(DocumentTypeSearchActions.resetButtonClicked, (state): DocumentTypeSearchState => ({
+    ...state,
+    searchCriteria: {}
   })),
   on(DocumentTypeSearchActions.documentTypesLoadingFailed, (state): DocumentTypeSearchState => ({
     ...state,

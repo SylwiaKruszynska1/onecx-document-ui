@@ -348,6 +348,7 @@
     "HEADER": "Document Types",
     "SUB_HEADER": "Manage Document Types",
     "ARIA-LABEL": "Page Header for Document Types",
+    "SEARCH_NAME": "Name",
     "EMPTY_RESULTS": "No document types found.",
     "HEADER_ACTIONS": {
       "CREATE": "Create",

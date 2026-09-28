@@ -149,6 +149,31 @@ describe('DocumentTypeSearchComponent', () => {
     })
   })
 
+  describe('search', () => {
+    it('should dispatch searchButtonClicked with search form raw value when called', () => {
+      component.searchForm.patchValue({ name: 'Invoice' })
+
+      component.search(component.searchForm)
+
+      expect(store.dispatch).toHaveBeenCalledWith(
+        DocumentTypeSearchActions.searchButtonClicked({
+          searchCriteria: { name: 'Invoice' }
+        })
+      )
+    })
+  })
+
+  describe('resetSearch', () => {
+    it('should reset the search form and dispatch resetButtonClicked when called', () => {
+      component.searchForm.patchValue({ name: 'Invoice' })
+
+      component.resetSearch()
+
+      expect(component.searchForm.getRawValue()).toEqual({ name: null })
+      expect(store.dispatch).toHaveBeenCalledWith(DocumentTypeSearchActions.resetButtonClicked())
+    })
+  })
+
   describe('editItem', () => {
     it('should dispatch editDocumentTypeButtonClicked when matching document type is found in viewModel', () => {
       const rowData: RowListGridData = {
@@ -349,6 +374,21 @@ describe('DocumentTypeSearchComponent', () => {
         expect(dispatchSpy).toHaveBeenCalledWith(DocumentTypeSearchActions.createDialogOpened())
         done()
       })
+    })
+  })
+
+  describe('buildForm', () => {
+    it('should create the document type form when called without arguments', () => {
+      const form = (component as any).buildForm()
+
+      expect(form.getRawValue()).toEqual({
+        name: null,
+        description: null,
+        activeStatus: false
+      })
+      expect(form.contains('description')).toBe(true)
+      expect(form.contains('activeStatus')).toBe(true)
+      expect(form.invalid).toBe(true)
     })
   })
 })

@@ -39,6 +39,32 @@ describe('DocumentTypeSearchReducer', () => {
     })
   })
 
+  describe('searchButtonClicked', () => {
+    it('should set searchCriteria to the provided value', () => {
+      const action = DocumentTypeSearchActions.searchButtonClicked({
+        searchCriteria: { name: 'Invoice' }
+      })
+
+      const state = reducers.documentTypeSearchReducer(reducers.initialState, action)
+
+      expect(state.searchCriteria).toEqual({ name: 'Invoice' })
+    })
+  })
+
+  describe('resetButtonClicked', () => {
+    it('should clear searchCriteria', () => {
+      const preState = {
+        ...reducers.initialState,
+        searchCriteria: { name: 'Invoice' }
+      }
+
+      const action = DocumentTypeSearchActions.resetButtonClicked()
+      const state = reducers.documentTypeSearchReducer(preState, action)
+
+      expect(state.searchCriteria).toEqual({})
+    })
+  })
+
   describe('documentTypesLoadingFailed', () => {
     it('should clear results and set loadingIndicator to false', () => {
       const preState = {
@@ -194,6 +220,7 @@ describe('DocumentTypeSearchReducer', () => {
       expect(reducers.initialState).toEqual({
         columns: documentTypeSearchColumns,
         results: [],
+        searchCriteria: {},
         loadingIndicator: false,
         resultComponentState: null,
         searchHeaderComponentState: null,

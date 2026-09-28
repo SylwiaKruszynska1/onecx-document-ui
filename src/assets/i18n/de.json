@@ -343,6 +343,7 @@
     "HEADER": "Dokumenttypen",
     "SUB_HEADER": "Dokumenttypen verwalten",
     "ARIA-LABEL": "Seitenkopf für Dokumenttypen",
+    "SEARCH_NAME": "Name",
     "EMPTY_RESULTS": "Keine Dokumenttypen gefunden.",
     "HEADER_ACTIONS": {
       "CREATE": "Erstellen",

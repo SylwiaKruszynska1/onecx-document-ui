@@ -10,14 +10,23 @@ import { DocumentTypeSearchViewModel } from './document-type-search.viewmodel'
 
 export const documentTypeSearchSelectors = createChildSelectors(documentFeature.selectDocumentTypes, initialState)
 
+export const selectSearchCriteria = documentTypeSearchSelectors.selectSearchCriteria
+
 export const selectResults = createSelector(
   documentTypeSearchSelectors.selectResults,
-  (results: DocumentType[]): RowListGridData[] =>
-    results.map((item) => ({
+  selectSearchCriteria,
+  (results: DocumentType[], searchCriteria): RowListGridData[] => {
+    let filtered = results
+    if (searchCriteria?.name) {
+      const searchName = searchCriteria.name.toLowerCase()
+      filtered = filtered.filter((item) => item.name?.toLowerCase().includes(searchName))
+    }
+    return filtered.map((item) => ({
       imagePath: '',
       ...item,
       id: item.id!
     }))
+  }
 )
 
 export const selectDocumentTypeSearchViewModel = createSelector(

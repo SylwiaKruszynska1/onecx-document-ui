@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 
 import { AngularAuthModule } from '@onecx/angular-auth'
+import { provideNavigatedEventStoreConnector } from '@onecx/ngrx-integration-interface'
 import { createAppEntrypoint, initializeRouter, startsWith } from '@onecx/angular-webcomponents'
 import { AppStateService, ConfigurationService } from '@onecx/angular-integration-interface'
 import { AngularAcceleratorModule } from '@onecx/angular-accelerator'
@@ -81,7 +82,8 @@ export const routes: Routes = [
     providePermissionService(),
     provideTranslationPathFromMeta(import.meta.url, 'assets/i18n/'),
     provideHttpClient(withInterceptorsFromDi()),
-    provideThemeConfig()
+    provideThemeConfig(),
+    provideNavigatedEventStoreConnector()
   ]
 })
 export class OneCXDocumentModule implements DoBootstrap {
