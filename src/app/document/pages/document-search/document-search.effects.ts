@@ -46,7 +46,7 @@ export class DocumentSearchEffects {
             const params = {
               ...criteria
             }
-            this.router.navigate([], {
+            void this.router.navigate([], {
               relativeTo: this.route,
               queryParams: params,
               replaceUrl: true,
@@ -68,7 +68,7 @@ export class DocumentSearchEffects {
           const urlTree = this.router.parseUrl(currentUrl)
           urlTree.queryParams = {}
           urlTree.fragment = null
-          this.router.navigate([urlTree.toString(), 'details', action.id])
+          void this.router.navigate([urlTree.toString(), 'details', action.id])
         })
       )
     },
@@ -84,7 +84,7 @@ export class DocumentSearchEffects {
           const urlTree = this.router.parseUrl(currentUrl)
           urlTree.queryParams = {}
           urlTree.fragment = null
-          this.router.navigate([urlTree.toString(), 'document-types'])
+          void this.router.navigate([urlTree.toString(), 'document-types'])
         })
       )
     },
@@ -192,7 +192,7 @@ export class DocumentSearchEffects {
         ofType(DocumentSearchActions.exportButtonClicked),
         concatLatestFrom(() => this.store.select(selectDocumentSearchViewModel)),
         map(([, viewModel]) => {
-          this.exportDataService.exportCsv(
+          void this.exportDataService.exportCsv(
             viewModel.resultComponentState?.displayedColumns ?? [],
             viewModel.results,
             'Document.csv'

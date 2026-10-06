@@ -231,7 +231,7 @@ export class DocumentCreateOperationsEffects {
         switchMap((action) =>
           this.appStateService.currentMfe$.asObservable().pipe(
             map((mfe) => {
-              this.router.navigate([`/${mfe.baseHref}`, 'details', action.documentId])
+              void this.router.navigate([`/${mfe.baseHref}`, 'details', action.documentId])
             })
           )
         )

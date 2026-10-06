@@ -164,11 +164,11 @@ export class DocumentSearchComponent implements OnInit {
   }
 
   quickUpload() {
-    this.router.navigate(['quick-upload'], { relativeTo: this.route })
+    void this.router.navigate(['quick-upload'], { relativeTo: this.route })
   }
 
   createNewDocument() {
-    this.router.navigate(['create-document'], { relativeTo: this.route })
+    void this.router.navigate(['create-document'], { relativeTo: this.route })
   }
 
   exportItems() {
