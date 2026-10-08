@@ -37,7 +37,7 @@ export class DocumentTypeSearchEffects {
         switchMap(() =>
           this.appStateService.currentMfe$.asObservable().pipe(
             map((mfe) => {
-              void this.router.navigate([`/${mfe.baseHref}`])
+              this.router.navigate([`/${mfe.baseHref}`]).catch((err) => console.error(err))
             })
           )
         )

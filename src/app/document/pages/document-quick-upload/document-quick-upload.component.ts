@@ -188,9 +188,11 @@ export class DocumentQuickUploadComponent implements OnInit, OnDestroy {
     if (flagIsValid || documentQuickUploadform.dirty || this.attachmentArray.length) {
       this.cancelDialogVisible = true
     } else {
-      void this.router.navigate(['../'], {
-        relativeTo: this.activeRoute
-      })
+      this.router
+        .navigate(['../'], {
+          relativeTo: this.activeRoute
+        })
+        .catch((err) => console.error(err))
     }
   }
 
@@ -201,9 +203,11 @@ export class DocumentQuickUploadComponent implements OnInit, OnDestroy {
 
   /***function for Yes option on cancel dialogue */
   onCancelYes() {
-    void this.router.navigate(['../'], {
-      relativeTo: this.activeRoute
-    })
+    this.router
+      .navigate(['../'], {
+        relativeTo: this.activeRoute
+      })
+      .catch((err) => console.error(err))
   }
 
   /**
