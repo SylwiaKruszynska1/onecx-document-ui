@@ -15,7 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { LetDirective } from '@ngrx/component'
 import { Store } from '@ngrx/store'
 import { TranslateModule } from '@ngx-translate/core'
-import { firstValueFrom, map, Observable } from 'rxjs'
+import { map, Observable } from 'rxjs'
 import { PrimeIcons, SelectItem } from 'primeng/api'
 
 import {
@@ -37,7 +37,7 @@ import { DocumentSearchCriteriaComponent } from './components/document-search-cr
 import { DocumentSearchActions } from './document-search.actions'
 import { documentSearchColumns } from './document-search.columns'
 import { DocumentSearchCriteriaSchema, documentSearchCriteriasSchema } from './document-search.parameters'
-import { documentSearchSelectors, selectDocumentSearchViewModel } from './document-search.selectors'
+import { selectDocumentSearchViewModel } from './document-search.selectors'
 import { DocumentSearchViewModel } from './document-search.viewmodel'
 
 @Component({
@@ -154,13 +154,7 @@ export class DocumentSearchComponent implements OnInit {
     this.store.dispatch(DocumentSearchActions.detailsButtonClicked({ id }))
   }
 
-  async resetSearch(): Promise<void> {
-    const criteria = await firstValueFrom(this.store.select(documentSearchSelectors.selectCriteria))
-
-    if (!criteria || Object.keys(criteria).length === 0) {
-      return
-    }
-
+  resetSearch() {
     this.documentSearchFormGroup.reset()
     this.store.dispatch(DocumentSearchActions.resetButtonClicked())
   }
