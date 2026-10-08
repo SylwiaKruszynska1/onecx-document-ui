@@ -34,7 +34,7 @@ import { DocumentSearchActions } from './document-search.actions'
 import { documentSearchColumns } from './document-search.columns'
 import { DocumentSearchComponent } from './document-search.component'
 import { initialState } from './document-search.reducers'
-import { selectDocumentSearchViewModel } from './document-search.selectors'
+import { documentSearchSelectors, selectDocumentSearchViewModel } from './document-search.selectors'
 import { DocumentSearchViewModel } from './document-search.viewmodel'
 import { documentSearchCriteriasSchema } from './document-search.parameters'
 
@@ -193,8 +193,12 @@ describe('DocumentSearchComponent', () => {
 
   it('should dispatch resetButtonClicked action on resetSearch', async () => {
     const doneFn = jest.fn()
+    const dispatchSpy = jest.spyOn(store, 'dispatch')
+
+    store.overrideSelector(documentSearchSelectors.selectCriteria, { name: 'test' })
     store.overrideSelector(selectDocumentSearchViewModel, {
       ...baseDocumentSearchViewModel,
+      searchCriteria: { name: 'test' },
       results: [
         {
           id: '1',
@@ -223,8 +227,20 @@ describe('DocumentSearchComponent', () => {
       doneFn()
     })
 
-    component.resetSearch()
+    await component.resetSearch()
     expect(doneFn).toHaveBeenCalledTimes(1)
+    expect(dispatchSpy).toHaveBeenCalledWith(DocumentSearchActions.resetButtonClicked())
+  })
+
+  it('should not dispatch resetButtonClicked when criteria are already empty', async () => {
+    const dispatchSpy = jest.spyOn(store, 'dispatch')
+    store.overrideSelector(documentSearchSelectors.selectCriteria, {})
+    store.refreshState()
+
+    await component.resetSearch()
+    await component.resetSearch()
+
+    expect(dispatchSpy).not.toHaveBeenCalledWith(DocumentSearchActions.resetButtonClicked())
   })
 
   it('should have 2 overFlow header action', async () => {
@@ -411,11 +427,15 @@ describe('DocumentSearchComponent', () => {
     expect(store.dispatch).toHaveBeenCalledWith(DocumentSearchActions.detailsButtonClicked({ id: 'test-id' }))
   })
 
-  it('should dispatch resetButtonClicked and reset form on resetSearch', () => {
-    jest.spyOn(store, 'dispatch')
+  it('should dispatch resetButtonClicked and reset form on resetSearch', async () => {
+    const dispatchSpy = jest.spyOn(store, 'dispatch')
+    store.overrideSelector(documentSearchSelectors.selectCriteria, { name: 'something' })
+    store.refreshState()
     component.documentSearchFormGroup.patchValue({ name: 'something' })
-    component.resetSearch()
-    expect(store.dispatch).toHaveBeenCalledWith(DocumentSearchActions.resetButtonClicked())
+
+    await component.resetSearch()
+
+    expect(dispatchSpy).toHaveBeenCalledWith(DocumentSearchActions.resetButtonClicked())
     expect(component.documentSearchFormGroup.value.name).toBeNull()
   })
 
