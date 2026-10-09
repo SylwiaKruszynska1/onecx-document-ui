@@ -162,9 +162,9 @@
       "UPDATE_SEARCH_CONFIG": "Update search configuration",
       "DIALOG_CONFIRM": "Confirm",
       "DIALOG_CANCEL": "Cancel",
-      "RESET_BUTTON_SEARCH_AND_RESULTS": {
+      "RESET_BUTTON": {
         "ARIA_LABEL": "Reset search criteria and results",
-        "DETAIL": "Reset search criteria and results"
+        "TOOLTIP": "Reset search criteria and results"
       }
     },
     "ERROR_MESSAGES": {

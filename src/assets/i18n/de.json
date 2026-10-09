@@ -157,9 +157,9 @@
       "UPDATE_SEARCH_CONFIG": "Suchkonfiguration aktualisieren",
       "DIALOG_CONFIRM": "Bestätigen",
       "DIALOG_CANCEL": "Abbrechen",
-      "RESET_BUTTON_SEARCH_AND_RESULTS": {
+      "RESET_BUTTON": {
         "ARIA_LABEL": "Suchkriterien und Ergebnisse zurücksetzen",
-        "DETAIL": "Suchkriterien und Ergebnisse zurücksetzen"
+        "TOOLTIP": "Suchkriterien und Ergebnisse zurücksetzen"
       }
     },
     "ERROR_MESSAGES": {
